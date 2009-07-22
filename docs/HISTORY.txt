@@ -1,0 +1,18 @@
+Changelog
+=========
+
+2.0b1
+----------------
+* Bug Fixes
+* includes newest jquery v1.3.2
+
+1.0
+----------------
+* Initial release
+* shipps all important ui functions
+    - change block layout
+    - delete block action with modale window
+    - more...
+* includes newest jquery v1.3.0
+* includes jquery theme "silver"
+ 

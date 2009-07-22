@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<object name="portal_css">
+    <stylesheet title=""
+        id="++resource++simplelayout.ui.base-theme-resources/ui.all.css"
+        media="screen" rel="stylesheet" rendering="import"
+        cacheable="True" compression="safe" cookable="True"
+        enabled="0" expression=""/>
+        
+    <stylesheet title=""
+        id="++resource++simplelayout.ui.base-resources/sl-base-styles.css"
+        media="screen" rel="stylesheet" rendering="import"
+        cacheable="True" compression="safe" cookable="True"
+        enabled="1" expression=""/>
+    
+    <stylesheet title=""
+        id="ui.core.css"
+        media="screen" rel="stylesheet" rendering="import"
+        cacheable="True" compression="safe" cookable="True"
+        enabled="1" expression=""/>
+
+    <stylesheet title=""
+        id="ui.accordion.css"
+        media="screen" rel="stylesheet" rendering="import"
+        cacheable="True" compression="safe" cookable="True"
+        enabled="1" expression=""/>
+
+    <stylesheet title=""
+        id="ui.datepicker.css"
+        media="screen" rel="stylesheet" rendering="import"
+        cacheable="True" compression="safe" cookable="True"
+        enabled="1" expression=""/>
+
+    <stylesheet title=""
+        id="ui.dialog.css"
+        media="screen" rel="stylesheet" rendering="import"
+        cacheable="True" compression="safe" cookable="True"
+        enabled="1" expression=""/>
+
+    <stylesheet title=""
+        id="ui.progressbar.css"
+        media="screen" rel="stylesheet" rendering="import"
+        cacheable="True" compression="safe" cookable="True"
+        enabled="1" expression=""/>
+
+    <stylesheet title=""
+        id="ui.resizable.css"
+        media="screen" rel="stylesheet" rendering="import"
+        cacheable="True" compression="safe" cookable="True"
+        enabled="1" expression=""/>
+
+    <stylesheet title=""
+        id="ui.slider.css"
+        media="screen" rel="stylesheet" rendering="import"
+        cacheable="True" compression="safe" cookable="True"
+        enabled="1" expression=""/>
+
+    <stylesheet title=""
+        id="ui.tabs.css"
+        media="screen" rel="stylesheet" rendering="import"
+        cacheable="True" compression="safe" cookable="True"
+        enabled="1" expression=""/>
+        
+    <stylesheet title=""
+        id="ui.theme.css"
+        media="screen" rel="stylesheet" rendering="import"
+        cacheable="True" compression="safe" cookable="True"
+        enabled="1" expression=""/>
+
+</object>

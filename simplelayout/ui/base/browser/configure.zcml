@@ -1,0 +1,45 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="simplelayout">
+
+    <browser:resourceDirectory
+        name="simplelayout.ui.base-resources"
+        directory="resources" />
+        
+    <browser:resourceDirectory
+        name="simplelayout.ui.base-theme-resources"
+        directory="resources/theme" />
+
+    <browser:page
+        for="Products.CMFCore.interfaces._content.IFolderish"
+        name="sl_ui_changelayout"
+        class=".views.ChangeLayout"
+		template="content.pt"
+        permission="cmf.ModifyPortalContent"
+        />
+
+    <browser:page
+        for="*"
+        name="sl_delete_action_popup"
+        class=".views.DeletePopup"
+        permission="cmf.ModifyPortalContent"
+        />
+
+    <browser:page
+        for="*"
+        name="sl_delete_object"
+        class=".views.DeleteObject"
+        permission="cmf.ModifyPortalContent"
+        />
+
+    <browser:page
+        for="*"
+        name="sl_get_block_controls"
+        class=".views.RenderBlockControls"
+        permission="cmf.ModifyPortalContent"
+        />
+        
+
+</configure>

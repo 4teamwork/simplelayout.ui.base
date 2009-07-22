@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<object name="portal_javascripts">
+ <javascript
+    id="++resource++simplelayout.ui.base-resources/sl-base.js"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression=""  inline="False"/>
+
+ <javascript
+    id="sl_ui_variables.js"
+    cacheable="False" compression="none" cookable="False"
+    enabled="True" expression=""  inline="True"/>
+
+ <javascript
+    id="++resource++simplelayout.ui.base-resources/jq-QueuManagerPlugin-v0.2.js"
+    cacheable="False" compression="none" cookable="False"
+    enabled="True" expression=""  inline="False"/>
+
+
+ <javascript
+    id="++resource++kukit-devel.js"
+    cacheable="False" compression="none" cookable="False"
+    enabled="False" expression="python: not here.restrictedTraverse('@@plone_portal_state').anonymous() and here.restrictedTraverse('@@kss_devel_mode').ison()"  inline="False"/>
+
+</object>
