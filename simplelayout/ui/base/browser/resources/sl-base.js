@@ -1,5 +1,14 @@
+var ajaxManager = jq.manageAjax.create('queuedRequests', { 
+    queue: true,  
+    cacheResponse: false 
+}); 
+
+
+
 jq(function(){
-    jq(".simplelayout-content").bind("toggleeditmode", function(){
+    //XXX refactor - if there is more than one simplelayout-content class present
+    //the event will binded twice, so far we bind the first on we get
+    jq(".simplelayout-content").eq(0).bind("toggleeditmode", function(){
         if(!simplelayout.edit_mode || simplelayout.force_edit_mode){
             var uids = [];
             jq('.sl-controls').each(function(){
@@ -17,7 +26,7 @@ jq(function(){
                 jq(".simplelayout-content").trigger('actionsloaded');
                 simplelayout.edit_mode = 1;
                 simplelayout.force_edit_mode = 0;
-            },'json')   
+            },'json');
         }else{
             jq('.sl-controls').html('&nbsp;');
             simplelayout.edit_mode = 0;
@@ -60,12 +69,27 @@ function refreshParagraph(item){
     
     layout = layout + cssclass;
     var fieldname = gup('fieldname',a_el[0].href);
+    
+    ajaxManager.add({url:'sl_ui_changelayout',
+                            data:{ uid : uid, layout :layout,fieldname:fieldname },
+                            success:function(data){
+                                jq('#uid_' + uid +' .simplelayout-block-wrapper').replaceWith(data);
+                                jq('#uid_' + uid +' .active').removeClass('active');
+                                jq(item).addClass('active');
+                                alignBlockToGridAction();
+                                }
+                            });
+    
+/*    
     jq.post('sl_ui_changelayout', { uid : uid, layout :layout,fieldname:fieldname }, function(data){
         jq('#uid_' + uid +' .simplelayout-block-wrapper').replaceWith(data);
         jq('#uid_' + uid +' .active').removeClass('active');
         jq(item).addClass('active');
         alignBlockToGridAction();
     });
+*/
+    
+    ajaxManager
     
     return 0
     

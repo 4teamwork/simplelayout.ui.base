@@ -1,6 +1,16 @@
 Changelog
 =========
 
+2.0b2
+----------------
+
+* Bugfix: bind toggleeditmode event only to the first matching 
+  simplelayout-content class, this is important for 
+  simplelayout.portlet.dropzone package [mathias.leimgruber]
+* define ajaxManager globaly in this package [mathias.leimgruber]
+
+
+
 2.0b1
 ----------------
 * Bug Fixes
