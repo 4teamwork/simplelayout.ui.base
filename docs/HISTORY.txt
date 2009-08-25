@@ -3,6 +3,7 @@ Changelog
 
 2.0b3
 ----------------
+* replace jsonlib with z3c.json, avoid ucs4 error in some cases[mathias.leimgruber]
 
 
 2.0b2

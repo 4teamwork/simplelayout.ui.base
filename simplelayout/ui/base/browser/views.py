@@ -2,8 +2,7 @@ from Products.Five.browser import BrowserView
 from zope.component import getUtility, getMultiAdapter,queryMultiAdapter
 from Products.CMFCore.utils import getToolByName
 from simplelayout.base.utils import IBlockControl
-import zope.component
-import jsonlib
+from z3c.json import minjson as json
 from Products.CMFPlone.utils import isLinked
 from Products.CMFPlone.utils import safe_unicode
 from Products.CMFPlone.utils import transaction_note
@@ -19,7 +18,7 @@ class ChangeLayout(BrowserView):
             block = at_tool.getObject(uid)
             converter = getUtility(IBlockControl, name='block-layout')
             converter.update(self.context, block, self.request, layout=layout)  
-            self.block_view = zope.component.queryMultiAdapter((block, self.request), name='block_view')               
+            self.block_view = queryMultiAdapter((block, self.request), name='block_view')               
             return super(BrowserView, self).__call__(self.context, self.request)
         
 
@@ -103,4 +102,4 @@ class RenderBlockControls(BrowserView):
             if object_ is not None:
                 controls = object_.restrictedTraverse("@@sl_controls")
                 result['items'].append(dict(id=key,data=controls()))
-        return jsonlib.write(result)
+        return json.write(result)

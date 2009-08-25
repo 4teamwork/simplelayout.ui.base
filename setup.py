@@ -25,7 +25,7 @@ setup(name='simplelayout.ui.base',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'jsonlib',
+          'z3c.json',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
