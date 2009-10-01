@@ -1,21 +1,18 @@
 <?xml version="1.0"?>
 <object name="portal_javascripts">
- <javascript
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True"
+    expression="python: object.restrictedTraverse('@@simplelayout').isSimplelayout"
     id="++resource++simplelayout.ui.base-resources/sl-base.js"
-    cacheable="True" compression="safe" cookable="True"
-    enabled="True" expression=""  inline="False"/>
-
- <javascript
-    id="sl_ui_variables.js"
-    cacheable="False" compression="none" cookable="False"
-    enabled="True" expression=""  inline="True"/>
-
- <javascript
+    inline="False"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True"
+    expression="python: object.restrictedTraverse('@@simplelayout').isSimplelayout"
+    id="sl_ui_variables.js" inline="False"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression=""
     id="++resource++simplelayout.ui.base-resources/jq-QueuManagerPlugin-v0.2.js"
-    cacheable="False" compression="none" cookable="False"
-    enabled="True" expression=""  inline="False"/>
-
-
+    inline="False"/>
  <javascript
     id="++resource++kukit-devel.js"
     cacheable="False" compression="none" cookable="False"
