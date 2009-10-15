@@ -1,9 +1,14 @@
 Changelog
 =========
 
+2.0rc1
+----------------
+
+
 2.0b4
 ----------------
 * compress, merged and cache js. [mathias.leimgruber]
+
 
 2.0b3
 ----------------
