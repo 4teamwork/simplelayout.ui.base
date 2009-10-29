@@ -16,7 +16,7 @@ jq(function(){
                     if (element_id != undefined && element_id.length == 36)
                         uids.push(element_id);
             })
-            if (!uid){
+            if (uids.length != 0){
                 jq.post(getBaseUrl()+'sl_get_block_controls', {'uids': uids.join(',')},function(data){
                     jq(jq('.sl-controls').get(0)).html(data.container);
                     jq.each(data.items, function(i,item){
