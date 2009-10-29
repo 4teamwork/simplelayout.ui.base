@@ -16,17 +16,19 @@ jq(function(){
                     if (element_id != undefined && element_id.length == 36)
                         uids.push(element_id);
             })
-            jq.post(getBaseUrl()+'sl_get_block_controls', {'uids': uids.join(',')},function(data){
-                jq(jq('.sl-controls').get(0)).html(data.container);
-                jq.each(data.items, function(i,item){
-                    var target = jq('#'+item.id+' .sl-controls')
-                    target.html(item.data);
-                });  
-                jq('.sl-controls').show();
-                jq(".simplelayout-content").trigger('actionsloaded');
-                simplelayout.edit_mode = 1;
-                simplelayout.force_edit_mode = 0;
-            },'json');
+            if (!uid){
+                jq.post(getBaseUrl()+'sl_get_block_controls', {'uids': uids.join(',')},function(data){
+                    jq(jq('.sl-controls').get(0)).html(data.container);
+                    jq.each(data.items, function(i,item){
+                        var target = jq('#'+item.id+' .sl-controls')
+                        target.html(item.data);
+                    });  
+                    jq('.sl-controls').show();
+                    jq(".simplelayout-content").trigger('actionsloaded');
+                    simplelayout.edit_mode = 1;
+                    simplelayout.force_edit_mode = 0;
+                },'json');
+            }
         }else{
             jq('.sl-controls').html('&nbsp;');
             simplelayout.edit_mode = 0;
