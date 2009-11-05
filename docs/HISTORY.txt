@@ -1,6 +1,10 @@
 Changelog
 =========
 
+2.0rc2
+---------------
+
+
 2.0rc1
 ----------------
 * JS-fix: load controls on pages without any blocks, faild if there 
