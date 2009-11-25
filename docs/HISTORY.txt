@@ -3,7 +3,9 @@ Changelog
 
 2.0rc2
 ---------------
-
+* moved JS toggleEditMode funtion from simplelayout.base to this 
+  package [mathias.leimgruber]
+* use cookie to store the edit-mode state [mathias.leimgruber]
 
 2.0rc1
 ----------------

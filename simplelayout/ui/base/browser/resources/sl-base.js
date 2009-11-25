@@ -5,36 +5,80 @@ var ajaxManager = jq.manageAjax.create('queuedRequests', {
 
 
 
-jq(function(){
-    //XXX refactor - if there is more than one simplelayout-content class present
-    //the event will binded twice, so far we bind the first on we get
-    jq(".simplelayout-content").eq(0).bind("toggleeditmode", function(){
-        if(!simplelayout.edit_mode || simplelayout.force_edit_mode){
-            var uids = [];
-            jq('.sl-controls').each(function(){
-                    var element_id = jq(this).closest('.BlockOverallWrapper').attr('id');
-                    if (element_id != undefined && element_id.length == 36)
-                        uids.push(element_id);
-            })
-            if (uids.length != 0){
-                jq.post(getBaseUrl()+'sl_get_block_controls', {'uids': uids.join(',')},function(data){
-                    jq(jq('.sl-controls').get(0)).html(data.container);
-                    jq.each(data.items, function(i,item){
-                        var target = jq('#'+item.id+' .sl-controls')
-                        target.html(item.data);
-                    });  
-                    jq('.sl-controls').show();
-                    jq(".simplelayout-content").trigger('actionsloaded');
-                    simplelayout.edit_mode = 1;
-                    simplelayout.force_edit_mode = 0;
-                },'json');
-            }
-        }else{
-            jq('.sl-controls').html('&nbsp;');
-            simplelayout.edit_mode = 0;
+simplelayout.toggleEditMode = function(toggle){
+
+    var $controls = jq('.sl-controls');
+    var $slots = jq('.simplelayout-content [id*=slot]');
+
+    //get the edit mode state from cookie
+    simplelayout.edit_mode = readCookie('edit_mode');
+    //set to 0 if null
+    if (!simplelayout.edit_mode)
+        simplelayout.edit_mode = "0";
+    
+    if (toggle) {
+        simplelayout.edit_mode=="0" ? simplelayout.edit_mode = "1" : simplelayout.edit_mode = "0";
+        createCookie('edit_mode',simplelayout.edit_mode);
         }
-    })
-})
+    
+    
+    if(simplelayout.edit_mode=="1"){
+        var uids = [];
+        $controls.each(function(){
+                var element_id = jq(this).closest('.BlockOverallWrapper').attr('id');
+                if (element_id != undefined && element_id.length == 36)
+                    uids.push(element_id);
+        })
+        if (uids.length != 0){
+            jq.post(getBaseUrl()+'sl_get_block_controls', {'uids': uids.join(',')},function(data){
+                jq(jq('.sl-controls').get(0)).html(data.container);
+                jq.each(data.items, function(i,item){
+                    var target = jq('#'+item.id+' .sl-controls')
+                    //load controls
+                    target.html(item.data);
+                    //show controls div
+                    target.show();
+                    jq(".simplelayout-content").trigger('actionsloaded');
+                    var $block = target.closest('.BlockOverallWrapper');
+                    if (!$block.hasClass("blockHighlight")) 
+                        $block.addClass("blockHighlight");
+                });  
+                //add borders
+                if (!$slots.hasClass("highlightBorder"))
+                    $slots.addClass("highlightBorder");
+                    
+            },'json');
+        }
+    }else{
+        var blocks = jq('.BlockOverallWrapper');
+        blocks.removeClass("blockHighlight");
+        $slots.removeClass("highlightBorder");
+        $controls.hide();
+        $controls.html('&nbsp;');
+        console.log('else');
+    }
+
+
+    var imgblocks = jq('.BlockOverallWrapper.image');
+    for (var b=0;b<imgblocks.length;b++) {
+        var query_wrapper = '#'+imgblocks[b].id + ' .sl-img-wrapper';
+        var width = jq(query_wrapper).width();
+        
+        var query_controls = '#'+imgblocks[b].id + ' .sl-controls';
+        var controls_el = jq(query_controls)[0];
+        controls_el.style.width = width+'px';
+        
+        }
+    
+    
+    
+    var $view = jq('#contentview-view');
+    $view.toggleClass("selected");
+    var $edit = jq('#contentview-edit-toggle');
+    $edit.toggleClass("selected");
+
+}
+
 
 function gup( name, url )
 {
@@ -60,7 +104,7 @@ function getBaseUrl(){
 
 }
 
-function refreshParagraph(item){
+simplelayout.refreshParagraph = function(item){
     //var item = this;
     var a_el = jq('a', item);
     var id = a_el[0].id.split("-");
@@ -78,7 +122,7 @@ function refreshParagraph(item){
                                 jq('#uid_' + uid +' .simplelayout-block-wrapper').replaceWith(data);
                                 jq('#uid_' + uid +' .active').removeClass('active');
                                 jq(item).addClass('active');
-                                alignBlockToGridAction();
+                                simplelayout.alignBlockToGridAction();
                                 }
                             });
     
@@ -103,7 +147,7 @@ function activeSimpleLayoutControls(){
             e.stopPropagation();
             e.preventDefault();
             
-            refreshParagraph(this);
+            simplelayout.refreshParagraph(this);
 
         });
 
@@ -157,4 +201,13 @@ jq(function(){
     jq(".simplelayout-content").bind("actionsloaded", activeSimpleLayoutControls);
     jq(".simplelayout-content").bind("actionsloaded", function(){initializeMenus();});
     
+    //toggleEditMode it checks if we are on edit mode or not
+    simplelayout.toggleEditMode(toggle=false);
+     
+    //bind click event on edit-button
+    jq('#contentview-edit a').bind('click',function(e){
+        e.stopPropagation();
+        e.preventDefault();
+        simplelayout.toggleEditMode(toggle=true);
+    });
 });
