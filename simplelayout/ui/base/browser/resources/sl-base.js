@@ -9,6 +9,9 @@ simplelayout.toggleEditMode = function(toggle){
 
     var $controls = jq('.sl-controls');
     var $slots = jq('.simplelayout-content [id*=slot]');
+    var $view = jq('#contentview-view');
+    var $edit = jq('#contentview-edit');
+
 
     //get the edit mode state from cookie
     simplelayout.edit_mode = readCookie('edit_mode');
@@ -37,7 +40,7 @@ simplelayout.toggleEditMode = function(toggle){
                     //load controls
                     target.html(item.data);
                     //show controls div
-                    target.show();
+                    target.show("slow");
                     jq(".simplelayout-content").trigger('actionsloaded');
                     var $block = target.closest('.BlockOverallWrapper');
                     if (!$block.hasClass("blockHighlight")) 
@@ -47,15 +50,24 @@ simplelayout.toggleEditMode = function(toggle){
                 if (!$slots.hasClass("highlightBorder"))
                     $slots.addClass("highlightBorder");
                     
+                //edit is selected
+                if (!$edit.hasClass("selected"))
+                        $edit.addClass("selected");
+                $view.removeClass("selected");
+                    
             },'json');
         }
     }else{
         var blocks = jq('.BlockOverallWrapper');
         blocks.removeClass("blockHighlight");
         $slots.removeClass("highlightBorder");
-        $controls.hide();
+        $controls.hide("slow");
         $controls.html('&nbsp;');
-        console.log('else');
+        //view is selected
+        if (!$view.hasClass("selected"))
+                $view.addClass("selected");
+        $edit.removeClass("selected");
+
     }
 
 
@@ -72,10 +84,7 @@ simplelayout.toggleEditMode = function(toggle){
     
     
     
-    var $view = jq('#contentview-view');
-    $view.toggleClass("selected");
-    var $edit = jq('#contentview-edit-toggle');
-    $edit.toggleClass("selected");
+
 
 }
 
