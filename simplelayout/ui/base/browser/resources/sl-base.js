@@ -32,31 +32,30 @@ simplelayout.toggleEditMode = function(toggle){
                 if (element_id != undefined && element_id.length == 36)
                     uids.push(element_id);
         })
-        if (uids.length != 0){
-            jq.post(getBaseUrl()+'sl_get_block_controls', {'uids': uids.join(',')},function(data){
-                jq(jq('.sl-controls').get(0)).html(data.container);
-                jq.each(data.items, function(i,item){
-                    var target = jq('#'+item.id+' .sl-controls')
-                    //load controls
-                    target.html(item.data);
-                    //show controls div
-                    target.show("slow");
-                    jq(".simplelayout-content").trigger('actionsloaded');
-                    var $block = target.closest('.BlockOverallWrapper');
-                    if (!$block.hasClass("blockHighlight")) 
-                        $block.addClass("blockHighlight");
-                });  
-                //add borders
-                if (!$slots.hasClass("highlightBorder"))
-                    $slots.addClass("highlightBorder");
-                    
-                //edit is selected
-                if (!$edit.hasClass("selected"))
-                        $edit.addClass("selected");
-                $view.removeClass("selected");
-                    
-            },'json');
-        }
+        jq.post(getBaseUrl()+'sl_get_block_controls', {'uids': uids.join(',')},function(data){
+            //first element is the container controls area
+            jq(jq('.sl-controls').get(0)).html(data.container).show('slow');
+            jq.each(data.items, function(i,item){
+                var target = jq('#'+item.id+' .sl-controls')
+                //load controls
+                target.html(item.data);
+                //show controls div
+                target.show("slow");
+                jq(".simplelayout-content").trigger('actionsloaded');
+                var $block = target.closest('.BlockOverallWrapper');
+                if (!$block.hasClass("blockHighlight")) 
+                    $block.addClass("blockHighlight");
+            });  
+            //add borders
+            if (!$slots.hasClass("highlightBorder"))
+                $slots.addClass("highlightBorder");
+                
+            //edit is selected
+            if (!$edit.hasClass("selected"))
+                    $edit.addClass("selected");
+            $view.removeClass("selected");
+                
+        },'json');
     }else{
         var blocks = jq('.BlockOverallWrapper');
         blocks.removeClass("blockHighlight");
@@ -134,17 +133,6 @@ simplelayout.refreshParagraph = function(item){
                                 simplelayout.alignBlockToGridAction();
                                 }
                             });
-    
-/*    
-    jq.post('sl_ui_changelayout', { uid : uid, layout :layout,fieldname:fieldname }, function(data){
-        jq('#uid_' + uid +' .simplelayout-block-wrapper').replaceWith(data);
-        jq('#uid_' + uid +' .active').removeClass('active');
-        jq(item).addClass('active');
-        alignBlockToGridAction();
-    });
-*/
-    
-    ajaxManager
     
     return 0
     

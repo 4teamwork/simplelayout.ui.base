@@ -3,16 +3,16 @@
  <javascript cacheable="True" compression="safe" cookable="True"
     enabled="True"
     expression="object/@@simplelayout/isSimplelayout"
-    id="++resource++simplelayout.ui.base-resources/sl-base.js"
-    inline="False"/>
+    id="sl_ui_variables.js" inline="False" />
  <javascript cacheable="True" compression="safe" cookable="True"
     enabled="True"
     expression="object/@@simplelayout/isSimplelayout"
-    id="sl_ui_variables.js" inline="False"/>
+    id="++resource++simplelayout.ui.base-resources/sl-base.js"
+    inline="False" insert-after="sl_ui_variables.js"/>
  <javascript cacheable="True" compression="safe" cookable="True"
     enabled="True" expression=""
     id="++resource++simplelayout.ui.base-resources/jq-QueuManagerPlugin-v0.2.js"
-    inline="False"/>
+    inline="False" insert-after="jquery-integration.js"/>
  <javascript
     id="++resource++kukit-devel.js"
     cacheable="False" compression="none" cookable="False"
