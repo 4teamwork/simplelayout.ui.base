@@ -12,7 +12,6 @@ simplelayout.toggleEditMode = function(toggle){
     var $view = jq('#contentview-view');
     var $edit = jq('#contentview-edit');
 
-
     //get the edit mode state from cookie
     simplelayout.edit_mode = readCookie('edit_mode');
     //set to 0 if null
@@ -25,7 +24,7 @@ simplelayout.toggleEditMode = function(toggle){
         }
     
     
-    if(simplelayout.edit_mode=="1"){
+    if(simplelayout.edit_mode=="1" && $controls.length != 0){
         var uids = [];
         $controls.each(function(){
                 var element_id = jq(this).closest('.BlockOverallWrapper').attr('id');
