@@ -9,9 +9,13 @@
 ##
 #add global simpelayout ui variables here...
 
+#init simplelayout object
+print """
+var simplelayout = new Object();
+"""
 
 align_to_grid = 0
-grid = getattr(context.aq_inner.aq_explicit, 'align_to_grid', False)
+grid = getattr(context.aq_inner.aq_explicit, 'align_to_grid', '0')
 if int(grid):
     align_to_grid = 1
 
