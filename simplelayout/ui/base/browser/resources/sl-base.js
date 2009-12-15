@@ -39,7 +39,7 @@ simplelayout.toggleEditMode = function(toggle){
                 //load controls
                 target.html(item.data);
                 //show controls div
-                target.show("slow");
+                target.show();
                 jq(".simplelayout-content").trigger('actionsloaded');
                 var $block = target.closest('.BlockOverallWrapper');
                 if (!$block.hasClass("blockHighlight")) 
@@ -53,8 +53,12 @@ simplelayout.toggleEditMode = function(toggle){
             if (!$edit.hasClass("selected"))
                     $edit.addClass("selected");
             $view.removeClass("selected");
-                
+            
+            //expose edit area
+            //enable later
+            simplelayout.expose().load();
         },'json');
+
     }else{
         var blocks = jq('.BlockOverallWrapper');
         blocks.removeClass("blockHighlight");
@@ -65,6 +69,10 @@ simplelayout.toggleEditMode = function(toggle){
         if (!$view.hasClass("selected"))
                 $view.addClass("selected");
         $edit.removeClass("selected");
+        
+        //expose edit area
+        //enable later
+        simplelayout.expose().close();
 
     }
 
@@ -86,6 +94,15 @@ simplelayout.toggleEditMode = function(toggle){
 
 }
 
+
+simplelayout.expose = function(){
+    var editable = jq('#portal-columns');
+    var exposed =  editable.expose({api: true,
+                                    opacity: 0.3,
+                                    color:'black'});
+    
+    return exposed;
+}
 
 function gup( name, url )
 {
