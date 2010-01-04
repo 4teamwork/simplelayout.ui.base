@@ -11,14 +11,17 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile,PageTemp
 
 class ChangeLayout(BrowserView):
 
-    def __call__(self, uid=None, layout=""):
-        at_tool = getToolByName(self.context, 'archetype_tool')      
+    def __call__(self, uid=None, layout="", viewname="block_view"):
+        at_tool = getToolByName(self.context, 'archetype_tool')
         if uid and layout:
             uid = uid.replace('uid_','')
             block = at_tool.getObject(uid)
             converter = getUtility(IBlockControl, name='block-layout')
             converter.update(self.context, block, self.request, layout=layout)  
-            self.block_view = queryMultiAdapter((block, self.request), name='block_view')               
+            self.block_view = queryMultiAdapter((block, self.request), name='block_view-%s' % viewname)
+            #fallback
+            if self.block_view is None:
+                self.block_view = queryMultiAdapter((block, self.request), name='block_view')
             return super(BrowserView, self).__call__(self.context, self.request)
         
 

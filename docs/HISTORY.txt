@@ -1,6 +1,12 @@
 Changelog
 =========
 
+2.0
+---------------
+* read out viewname an pass it to the render method,
+  for more infos check README of simplelayout.base.
+  [mathias.leimgruber]
+
 2.0rc2
 ---------------
 * moved JS toggleEditMode funtion from simplelayout.base to this 

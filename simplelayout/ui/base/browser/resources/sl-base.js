@@ -135,13 +135,16 @@ simplelayout.refreshParagraph = function(item){
     var uid = id[0];
     //outch we have to change this asap - it makes no sense
     var layout = id[1];
-    var cssclass = id[2] ? '-' +id[2] : '';
+    var cssclass = id[2];
+    console.log(cssclass);
+    console.log(id);
+    var viewname = id[3];
     
-    layout = layout + cssclass;
+    layout = layout + '-' +cssclass;
     var fieldname = gup('fieldname',a_el[0].href);
     
     ajaxManager.add({url:'sl_ui_changelayout',
-                            data:{ uid : uid, layout :layout,fieldname:fieldname },
+                            data:{ uid : uid, layout :layout,viewname:viewname,fieldname:fieldname },
                             success:function(data){
                                 jq('#uid_' + uid +' .simplelayout-block-wrapper').replaceWith(data);
                                 jq('#uid_' + uid +' .active').removeClass('active');
