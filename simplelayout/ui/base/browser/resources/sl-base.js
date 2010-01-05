@@ -136,11 +136,16 @@ simplelayout.refreshParagraph = function(item){
     //outch we have to change this asap - it makes no sense
     var layout = id[1];
     var cssclass = id[2];
-    console.log(cssclass);
-    console.log(id);
     var viewname = id[3];
-    
-    layout = layout + '-' +cssclass;
+    if (cssclass!=undefined){
+        layout = layout + '-' +cssclass;    
+    }else{
+        cssclass = '';
+    }
+    if (viewname==undefined){
+        viewname = '';
+    }
+
     var fieldname = gup('fieldname',a_el[0].href);
     
     ajaxManager.add({url:'sl_ui_changelayout',

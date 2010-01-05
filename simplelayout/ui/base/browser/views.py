@@ -17,7 +17,7 @@ class ChangeLayout(BrowserView):
             uid = uid.replace('uid_','')
             block = at_tool.getObject(uid)
             converter = getUtility(IBlockControl, name='block-layout')
-            converter.update(self.context, block, self.request, layout=layout)  
+            converter.update(self.context, block, self.request, layout=layout, viewname=viewname)  
             self.block_view = queryMultiAdapter((block, self.request), name='block_view-%s' % viewname)
             #fallback
             if self.block_view is None:
