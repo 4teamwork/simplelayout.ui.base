@@ -26,7 +26,7 @@ setup(name='simplelayout.ui.base',
       install_requires=[
           'setuptools',
           'z3c.json',
-          'plone.app.jquerytools',
+          'plone.app.jquerytools==1.0b10',
           'collective.js.jquery==1.3.2.1'
           # -*- Extra requirements: -*-
       ],
