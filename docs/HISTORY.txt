@@ -6,6 +6,8 @@ Changelog
 * read out viewname an pass it to the render method,
   for more infos check README of simplelayout.base.
   [mathias.leimgruber]
+* fix zindex confilct with expose [mathias.leimgruber]
+* fix actionsloaded triggering [victor.baumann]
 
 2.0rc2
 ---------------
