@@ -40,11 +40,12 @@ simplelayout.toggleEditMode = function(toggle){
                 target.html(item.data);
                 //show controls div
                 target.show();
-                jq(".simplelayout-content").trigger('actionsloaded');
                 var $block = target.closest('.BlockOverallWrapper');
                 if (!$block.hasClass("blockHighlight")) 
                     $block.addClass("blockHighlight");
+                    
             });  
+            
             //add borders
             if (!$slots.hasClass("highlightBorder"))
                 $slots.addClass("highlightBorder");
@@ -57,6 +58,9 @@ simplelayout.toggleEditMode = function(toggle){
             //expose edit area
             //enable later
             simplelayout.expose().load();
+
+            jq(".simplelayout-content").trigger('actionsloaded');
+    
         },'json');
 
     }else{
@@ -99,7 +103,8 @@ simplelayout.expose = function(){
     var editable = jq('#portal-columns');
     var exposed =  editable.expose({api: true,
                                     opacity: 0.3,
-                                    color:'black'});
+                                    color:'black',
+                                    zIndex:2000});
     
     return exposed;
 }
@@ -178,12 +183,12 @@ function activeSimpleLayoutControls(){
 function activateSimplelayoutActions(){
     jq('.simplelayout-content a.sl-delete-action').bind('click',function(e){
             e.preventDefault();
+            e.stopPropagation();
             var html = jq('<div class="delete_confirmation_popup"></div>');
             id = this.id;
             el = this;
             var obj_url = getBaseUrl()+id;
             html.load(obj_url+'/sl_delete_action_popup');
-            
             
             jq(html).dialog({
                 title: 'Entfernen', 
@@ -193,6 +198,7 @@ function activateSimplelayoutActions(){
                 show:"puff",
                 hide:"puff",
                 resizable:false,
+                zIndex: 4000,
                 overlay: {  
                     opacity: 0.6,  
                     background: "black"  
@@ -214,13 +220,13 @@ function activateSimplelayoutActions(){
                     }}}); 
                     
         })
-        
+    return false    
 }
 
 jq(function(){
-    jq(".simplelayout-content").bind("actionsloaded", activateSimplelayoutActions);
-    jq(".simplelayout-content").bind("actionsloaded", activeSimpleLayoutControls);
-    jq(".simplelayout-content").bind("actionsloaded", function(){initializeMenus();});
+    jq(".simplelayout-content:first").bind("actionsloaded", activateSimplelayoutActions);
+    jq(".simplelayout-content:first").bind("actionsloaded", activeSimpleLayoutControls);
+    jq(".simplelayout-content:first").bind("actionsloaded", function(){initializeMenus();});
     
     //toggleEditMode it checks if we are on edit mode or not
     simplelayout.toggleEditMode(toggle=false);
