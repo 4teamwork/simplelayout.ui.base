@@ -11,6 +11,16 @@ simplelayout.toggleEditMode = function(toggle){
     var $slots = jq('.simplelayout-content [id*=slot]');
     var $view = jq('#contentview-view');
     var $edit = jq('#contentview-edit');
+    var $preview = jq('#contentview-preview');
+
+    //set edit_mode to zero when someone clicks on view or preview
+    $view.bind('click', function(){
+        createCookie('edit_mode','0');
+    });
+    $preview.bind('click', function(){
+        createCookie('edit_mode','0');
+    });
+
 
     //get the edit mode state from cookie
     simplelayout.edit_mode = readCookie('edit_mode');
@@ -57,7 +67,7 @@ simplelayout.toggleEditMode = function(toggle){
             
             //expose edit area
             //enable later
-            simplelayout.expose().load();
+            //simplelayout.expose().load();
 
             jq(".simplelayout-content").trigger('actionsloaded');
     
@@ -72,11 +82,12 @@ simplelayout.toggleEditMode = function(toggle){
         //view is selected
         if (!$view.hasClass("selected"))
                 $view.addClass("selected");
+
         $edit.removeClass("selected");
         
         //expose edit area
         //enable later
-        simplelayout.expose().close();
+        //simplelayout.expose().close();
 
     }
 
@@ -98,7 +109,8 @@ simplelayout.toggleEditMode = function(toggle){
 
 }
 
-
+/* not realy intuitive so far */
+/*
 simplelayout.expose = function(){
     var editable = jq('#portal-columns');
     var exposed =  editable.expose({api: true,
@@ -108,6 +120,8 @@ simplelayout.expose = function(){
     
     return exposed;
 }
+
+*/
 
 function gup( name, url )
 {
