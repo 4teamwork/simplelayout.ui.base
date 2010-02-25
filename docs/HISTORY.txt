@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.0.2
+---------------
+* blocks are not longer available to choose as startpage [mathias.leimgruber]
+
+
 2.0.1
 ---------------
 * removed expose function, cause of IE problems [mathias.leimgruber]
