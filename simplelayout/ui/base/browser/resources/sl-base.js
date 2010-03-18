@@ -72,6 +72,9 @@ simplelayout.toggleEditMode = function(toggle){
             jq(".simplelayout-content").trigger('actionsloaded');
     
         },'json');
+        
+        // init empty block spaces
+        setHeightOfEmptyDropZone()
 
     }else{
         var blocks = jq('.BlockOverallWrapper');

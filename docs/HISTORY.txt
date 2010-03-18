@@ -3,7 +3,9 @@ Changelog
 
 2.0.2
 ---------------
-* blocks are not longer available to choose as startpage [mathias.leimgruber]
+* blocks are not longer available as startpage [mathias.leimgruber]
+* initialize empty slots and give them a height, for easier
+  drag'n'drop [mathias.leimgruber]
 
 
 2.0.1
