@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = open('izug/blog/version.txt').read().strip()
+version = '2.0.2'
 
 setup(name='simplelayout.ui.base',
       version=version,
@@ -26,6 +26,8 @@ setup(name='simplelayout.ui.base',
       install_requires=[
           'setuptools',
           'z3c.json',
+          'plone.app.jquerytools==1.0b10',
+          'collective.js.jquery==1.3.2.1'
           # -*- Extra requirements: -*-
       ],
       entry_points="""

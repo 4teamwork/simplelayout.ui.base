@@ -7,24 +7,22 @@ from Products.CMFPlone.utils import isLinked
 from Products.CMFPlone.utils import safe_unicode
 from Products.CMFPlone.utils import transaction_note
 from Products.CMFPlone import PloneMessageFactory as _pl_
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile,PageTemplateFile
 
 class ChangeLayout(BrowserView):
 
-    template = ViewPageTemplateFile('content.pt')
-
     def __call__(self, uid=None, layout="", viewname="block_view"):
-        rc = getToolByName(self.context, 'reference_catalog')
+        at_tool = getToolByName(self.context, 'archetype_tool')
         if uid and layout:
             uid = uid.replace('uid_','')
-            block = rc.lookupObject(uid)
+            block = at_tool.getObject(uid)
             converter = getUtility(IBlockControl, name='block-layout')
             converter.update(self.context, block, self.request, layout=layout, viewname=viewname)  
             self.block_view = queryMultiAdapter((block, self.request), name='block_view-%s' % viewname)
             #fallback
             if self.block_view is None:
                 self.block_view = queryMultiAdapter((block, self.request), name='block_view')
-            return self.template()
+            return super(BrowserView, self).__call__(self.context, self.request)
         
 
 class DeletePopup(BrowserView):
@@ -94,7 +92,7 @@ class DeleteObject(BrowserView):
         
 class RenderBlockControls(BrowserView):
     def __call__(self, uids):
-        rc = getToolByName(self.context, 'reference_catalog')
+        at_tool = getToolByName(self.context, 'archetype_tool')
         uids = uids.split(',')
         result = {}
         result['container'] = self.context.restrictedTraverse("@@sl_controls")()
@@ -103,7 +101,7 @@ class RenderBlockControls(BrowserView):
             if not key:
                 continue
             uid = key.split('_')[1]
-            object_ = rc.lookupObject(uid)
+            object_ = at_tool.getObject(uid)
             if object_ is not None:
                 controls = object_.restrictedTraverse("@@sl_controls")
                 result['items'].append(dict(id=key,data=controls()))

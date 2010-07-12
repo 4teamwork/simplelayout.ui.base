@@ -8,6 +8,7 @@
     <five:registerPackage package="." initialize=".initialize" />
 
     <include package="plone.app.jquerytools" />
+    <include package="collective.js.jquery" />
     <include package=".browser" />
     
     <genericsetup:registerProfile
