@@ -1,6 +1,18 @@
 Changelog
 =========
 
+3.0.0
+----------------
+* removed dependecies for jquery
+  [09.07.2010, mathias.leimgruber]
+
+* removed old plone globals, use now portal_state
+  [12.07.2010, mathias.leimgruber]
+  
+* make views work with plone4
+  [12.07.2010, mathias.leimgruber]
+
+
 2.0.2
 ---------------
 * blocks are not longer available as startpage [mathias.leimgruber]
