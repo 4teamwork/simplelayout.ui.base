@@ -43,7 +43,13 @@ simplelayout.toggleEditMode = function(toggle){
                        });
         jq.post(getBaseUrl()+'sl_get_block_controls', {'uids': uids.join(',')},function(data){
             //first element is the container controls area
-            jq(jq('.sl-controls').get(0)).html(data.container).show('slow');
+                  jq(jq('.sl-controls').get(0)).html(data.container).each(
+                    function() {
+                      if(jq(this).html().replace(/\s/gi, '').length > 0) {
+                        // only show if there are any controls
+                        jq(this).show('slow');
+                      }
+                    });
             jq.each(data.items, function(i,item){
                 var target = jq('#'+item.id+' .sl-controls');
                 //load controls
