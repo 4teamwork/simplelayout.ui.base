@@ -243,7 +243,9 @@ function activateSimplelayoutActions(){
 jq(function(){
     jq(".simplelayout-content:first").bind("actionsloaded", activateSimplelayoutActions);
     jq(".simplelayout-content:first").bind("actionsloaded", activeSimpleLayoutControls);
-    jq(".simplelayout-content:first").bind("actionsloaded", function(){initializeMenus();});
+
+// XXX initializeMenus is a toggle and is already called by plone
+//     jq(".simplelayout-content:first").bind("actionsloaded", function(){initializeMenus();});
 
     //toggleEditMode it checks if we are on edit mode or not
     simplelayout.toggleEditMode(toggle=false);
