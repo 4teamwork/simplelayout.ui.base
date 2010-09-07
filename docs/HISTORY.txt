@@ -1,8 +1,13 @@
 Changelog
 =========
 
+
 3.0.0
 ----------------
+
+* Javascript: added 'toggle-edit-mode' jQuery event
+  [07.09.2010, jbaumann]
+
 * removed dependecies for jquery
   [09.07.2010, mathias.leimgruber]
 

@@ -112,8 +112,7 @@ simplelayout.toggleEditMode = function(toggle){
 
         }
 
-
-
+  $edit.trigger('toggle-edit-mode');
 
 
 }
