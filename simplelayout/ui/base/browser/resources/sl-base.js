@@ -261,4 +261,8 @@ jq(function(){
         e.preventDefault();
         simplelayout.toggleEditMode(toggle=true);
     });
+    
+    //use prepOverlay from plone.app.jquerytools to show images
+    jq('.sl-img-wrapper a').prepOverlay({subtype:'image'})
+    
 });

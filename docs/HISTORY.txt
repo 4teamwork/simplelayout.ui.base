@@ -4,9 +4,11 @@ Changelog
 
 3.0.0
 ----------------
+* use prepOverlay to show images instead of greybox
+  [04.10.2010, mathias.leimgruber]
 
-* fixed template select_default_page for plone4
-  [29.09.2010, jinfanger]
+* Updated select_default_page.cpt patch to plone 4
+  [30.09.2010, mathias.leimgruber]
 
 * Javascript: added 'toggle-edit-mode' jQuery event
   [07.09.2010, jbaumann]
