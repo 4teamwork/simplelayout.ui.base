@@ -53,7 +53,9 @@ simplelayout.toggleEditMode = function(toggle){
             jq.each(data.items, function(i,item){
                 var target = jq('#'+item.id+' .sl-controls');
                 //load controls
-                target.html(item.data);
+                if (item.data.replace(/\s/gi, '').length)
+                    target.html(item.data);
+                
                 //show controls div
                 target.show();
                 var $block = target.closest('.BlockOverallWrapper');
