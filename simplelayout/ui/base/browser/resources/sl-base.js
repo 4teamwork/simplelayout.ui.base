@@ -102,24 +102,19 @@ simplelayout.toggleEditMode = function(toggle){
 
     }
 
-
     var imgblocks = jq('.BlockOverallWrapper.image');
     for (var b=0;b<imgblocks.length;b++) {
-        var query_wrapper = '#'+imgblocks[b].id + ' .sl-img-wrapper';
-        var width = jq(query_wrapper).width();
-
         var query_controls = '#'+imgblocks[b].id + ' .sl-controls';
         var controls_el = jq(query_controls)[0];
-        controls_el.style.width = width+'px';
-
-        }
-
-  $edit.trigger('toggle-edit-mode');
+        simplelayout.setControlsWidth(controls_el);
+    }
+    
+    $edit.trigger('toggle-edit-mode');
 
 
 }
 
-/* not realy intuitive so far */
+/* not really intuitive so far */
 /*
 simplelayout.expose = function(){
     var editable = jq('#portal-columns');
@@ -184,12 +179,24 @@ simplelayout.refreshParagraph = function(item){
                                 jq('#uid_' + uid +' .active').removeClass('active');
                                 jq(item).addClass('active');
                                 simplelayout.alignBlockToGridAction();
+                                simplelayout.setControlsWidth(item);
                                 }
                             });
 
     return 0;
 
 };
+
+simplelayout.setControlsWidth = function(item){
+    var imgblock = jq(item).closest('.BlockOverallWrapper.image');
+    if (imgblock.length != 0) {
+        // Get wrapper width
+        var wrapper_width = jq('.sl-img-wrapper', imgblock).width();
+        var controls_el = jq('.sl-controls', imgblock);
+        controls_el.css('width',wrapper_width+'px');
+    }
+    return 0;
+}
 
 
 function activeSimpleLayoutControls(){
