@@ -3,6 +3,8 @@ Changelog
 
 3.0
 ----------------
+* set controls of image blocks to block wrapper width. 
+  [27.12.2010, mathias.leimgruber]
 * fix load of sub workflow menus (do it like plone4)
   [13.07.2010, mathias.leimgruber]
 * removed old plone globals, use now portal_state
