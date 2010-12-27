@@ -212,46 +212,46 @@ function activeSimpleLayoutControls(){
 
 
 function activateSimplelayoutActions(){
-    jq('.simplelayout-content a.sl-delete-action').bind('click',function(e){
-            e.preventDefault();
-            e.stopPropagation();
-            var html = jq('<div class="delete_confirmation_popup"></div>');
-            id = this.id;
-            el = this;
-            var obj_url = getBaseUrl()+id;
-            html.load(obj_url+'/sl_delete_action_popup');
+    // delete
+    jq('.simplelayout-content a.sl-delete-action').each(function(i, o){
+        var $this = jq(o);
+        var uid = $this.closest('.BlockOverallWrapper').attr('id');
+        $this.prepOverlay({
+            subtype:'ajax',
+            urlmatch:'$',urlreplace:' #content > *',
+            formselector:'#delete_confirmation',
+            noform:function(){
+                //remove deleted block manually, because we won't reload the 
+                //hole page
+                jq('#'+uid).hide('blind',function(){
+                    jq(this).remove();
+                });
+                return 'close';
+            },
+            'closeselector':'[name=form.button.Cancel]'
+        });
+    });
 
-            jq(html).dialog({
-                title: 'Entfernen',
-                modal: true,
-                draggable: false,
-                width: 450,
-                show:"puff",
-                hide:"puff",
-                resizable:false,
-                zIndex: 4000,
-                overlay: {
-                    opacity: 0.6,
-                    background: "black"
-                    },
-                buttons: {
-                    "Ok": function() {
-                    jq.post(obj_url+'/sl_delete_object',{ },function(data){
-                        if (data){
-                            //remove entry
-                            jq(el).closest('.BlockOverallWrapper').hide('blind',function(){
-                                    jq(this).remove();
-                                });
-                            }
-                        });
-                    jq(this).dialog("close");
-                    },
-                "Cancel": function() {
-                    jq(this).dialog("close");
-                    }}});
+    //edit
+    jq('.simplelayout-content a.sl-edit-action').each(function(i, o){
+        var $this = jq(o);
+        $this.prepOverlay({
+            subtype:'ajax',
+            urlmatch:'$',urlreplace:' #content > *',
+            formselector:'form',
+            noform:function(){
+                simplelayout.refreshParagraph(
+                    $this.closest('.BlockOverallWrapper').find('.sl-layout.active')
+                );
 
+                return 'close';
+            },
+            'closeselector':'[name=form.button.Cancel]'
+        });
     });
     return false;
+
+
 }
 
 jq(function(){
@@ -272,6 +272,6 @@ jq(function(){
     });
     
     //use prepOverlay from plone.app.jquerytools to show images
-    jq('.sl-img-wrapper a').prepOverlay({subtype:'image'})
+    jq('.sl-img-wrapper a').prepOverlay({subtype:'image'});
     
 });
