@@ -180,9 +180,12 @@ simplelayout.refreshParagraph = function(item){
                                 jq(item).addClass('active');
                                 simplelayout.alignBlockToGridAction();
                                 simplelayout.setControlsWidth(item);
+                                //trigger refreshed event
+                                var $wrapper = jq(item).closest('.BlockOverallWrapper');
+                                jq(".simplelayout-content:first").trigger('refreshed',[$wrapper]);
+
                                 }
                             });
-
     return 0;
 
 };
