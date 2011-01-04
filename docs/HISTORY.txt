@@ -3,6 +3,9 @@ Changelog
 
 3.0
 ---
+* Trigger block "refreshed" event. 
+   [04.01.2011, mathias.leimgruber]
+
 * use prepOberlay function from plone.app.jquertools for delete and edit
   action. 
   [27.12.2010, mathias.leimgruber]
