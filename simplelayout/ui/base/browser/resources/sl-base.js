@@ -235,24 +235,32 @@ function activateSimplelayoutActions(){
         });
     });
 
+    // TODO: Currently we miss some js after loading de edit.pt in the overlay
+    // Example: WYSIWYG-editor will no load...
+    // I tried to use subtype iframe, wihtout success
     //edit
-    jq('.simplelayout-content a.sl-edit-action').each(function(i, o){
-        var $this = jq(o);
-        $this.prepOverlay({
-            subtype:'ajax',
-            urlmatch:'$',urlreplace:' #content > *',
-            formselector:'form',
-            noform:function(){
-                simplelayout.refreshParagraph(
-                    $this.closest('.BlockOverallWrapper').find('.sl-layout.active')
-                );
-
-                return 'close';
-            },
-            'closeselector':'[name=form.button.Cancel]'
-        });
-    });
-    return false;
+    // jq('.simplelayout-content a.sl-edit-action').each(function(i, o){
+    //     var $this = jq(o);
+    //     $this.prepOverlay({
+    //         subtype:'ajax',
+    //         urlmatch:'$',urlreplace:' div.documentEditable > *',
+    //         formselector:'form input.context',
+    //         config:{onBeforeLoad: function(e){
+    //               blubb = e;
+    //               
+    //               
+    //            }},
+    //         noform:function(){
+    //             simplelayout.refreshParagraph(
+    //                 $this.closest('.BlockOverallWrapper').find('.sl-layout.active')
+    //             );
+    // 
+    //             return 'close';
+    //         },
+    //         'closeselector':'[name=form.button.Cancel]'
+    //     });
+    // });
+    // return false;
 
 
 }
