@@ -4,6 +4,9 @@ Changelog
 
 3.0.0
 ----------------
+* Moved prepOverlay for images in a new JS file (permission Problem)
+  [21.01.2011, mathias.leimgruber]
+
 * use prepOverlay to show images instead of greybox
   [04.10.2010, mathias.leimgruber]
 

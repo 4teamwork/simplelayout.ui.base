@@ -10,6 +10,11 @@
     id="++resource++simplelayout.ui.base-resources/sl-base.js"
     inline="False" insert-after="sl_ui_variables.js"/>
  <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True"
+    expression=""
+    id="++resource++simplelayout.ui.base-resources/sl-base-general.js"
+    inline="False" insert-after="++resource++simplelayout.ui.base-resources/sl-base.js"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
     enabled="True" expression=""
     id="++resource++simplelayout.ui.base-resources/jq-QueuManagerPlugin-v0.2.js"
     inline="False" insert-after="jquery-integration.js"/>
@@ -17,5 +22,4 @@
     id="++resource++kukit-devel.js"
     cacheable="False" compression="none" cookable="False"
     enabled="False" expression="python: not here.restrictedTraverse('@@plone_portal_state').anonymous() and here.restrictedTraverse('@@kss_devel_mode').ison()"  inline="False"/>
-
 </object>
