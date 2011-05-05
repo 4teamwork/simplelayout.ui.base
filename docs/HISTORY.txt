@@ -4,6 +4,10 @@ Changelog
 
 3.0.0
 ----------------
+
+* Remove padding by js on the very right image (float). 
+  [05.05.2011, mathias.leimgruber]
+
 * Moved prepOverlay for images in a new JS file (permission Problem)
   [21.01.2011, mathias.leimgruber]
 
