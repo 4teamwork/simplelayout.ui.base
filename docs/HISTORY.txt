@@ -5,6 +5,11 @@ Changelog
 3.0.0
 ----------------
 
+* #486 Simplelayout ImageOverlay verbessern
+  Added Lightbox 0.5 (browser/resources/jquery_lightbox)
+  http://leandrovieira.com/projects/jquery/lightbox/
+  [05.05.2011, elio.schmutz]
+
 * Remove padding by js on the very right image (float). 
   [05.05.2011, mathias.leimgruber]
 

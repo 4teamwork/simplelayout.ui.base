@@ -1,6 +1,6 @@
 jq(function(){
-    //use prepOverlay from plone.app.jquerytools to show images
-    jq('.sl-img-wrapper a').prepOverlay({subtype:'image'});
+    //use jquery.lightbox from Lightbox to show images
+    jq('.sl-img-wrapper a').lightBox();
 
     // Detect floated images on the very right side and remove padding-right/
     // margin-right (so it will fit to the right border)

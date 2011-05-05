@@ -12,6 +12,10 @@
         name="simplelayout.ui.base-theme-resources"
         directory="resources/theme" />
 
+    <browser:resourceDirectory
+        name="simplelayout.ui.base-lightbox"
+        directory="resources/jquery_lightbox" />
+
     <browser:page
         for="Products.CMFCore.interfaces._content.IFolderish"
         name="sl_ui_changelayout"

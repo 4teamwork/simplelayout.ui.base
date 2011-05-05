@@ -282,7 +282,7 @@ jq(function(){
         simplelayout.toggleEditMode(toggle=true);
     });
     
-    //use prepOverlay from plone.app.jquerytools to show images
-    jq('.sl-img-wrapper a').prepOverlay({subtype:'image'});
+    //use jquery.lightbox from Lightbox to show images
+    jq('.sl-img-wrapper a').lightBox();
     
 });
