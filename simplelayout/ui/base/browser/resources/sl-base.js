@@ -222,7 +222,7 @@ function activateSimplelayoutActions(){
         $this.prepOverlay({
             subtype:'ajax',
             urlmatch:'$',urlreplace:' #content > *',
-            formselector:'#delete_confirmation',
+            formselector:'[action*=delete_confirmation]',
             noform:function(){
                 //remove deleted block manually, because we won't reload the 
                 //hole page
