@@ -243,13 +243,8 @@ function activateSimplelayoutActions(){
     //     var $this = jq(o);
     //     $this.prepOverlay({
     //         subtype:'ajax',
-    //         urlmatch:'$',urlreplace:' div.documentEditable > *',
-    //         formselector:'form input.context',
-    //         config:{onBeforeLoad: function(e){
-    //               blubb = e;
-    //               
-    //               
-    //            }},
+    //         filter:'#visual-portal-wrapper > *',
+    //         formselector:'[action*=base_edit]',
     //         noform:function(){
     //             simplelayout.refreshParagraph(
     //                 $this.closest('.BlockOverallWrapper').find('.sl-layout.active')
@@ -257,7 +252,7 @@ function activateSimplelayoutActions(){
     // 
     //             return 'close';
     //         },
-    //         'closeselector':'[name=form.button.Cancel]'
+    //         'closeselector':'[name=form.button.cancel]'
     //     });
     // });
     // return false;
