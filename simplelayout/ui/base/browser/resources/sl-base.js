@@ -276,8 +276,4 @@ jq(function(){
         e.preventDefault();
         simplelayout.toggleEditMode(toggle=true);
     });
-    
-    //use jquery.lightbox from Lightbox to show images
-    jq('.sl-img-wrapper a').lightBox();
-    
 });
