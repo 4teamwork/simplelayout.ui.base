@@ -161,11 +161,7 @@ simplelayout.refreshParagraph = function(item){
     var layout = id[1];
     var cssclass = id[2];
     var viewname = id[3];
-    if (cssclass!=undefined){
-        layout = layout + '-' +cssclass;
-    }else{
-        cssclass = '';
-    }
+    cssclass = '';
     if (viewname==undefined){
         viewname = '';
     }
