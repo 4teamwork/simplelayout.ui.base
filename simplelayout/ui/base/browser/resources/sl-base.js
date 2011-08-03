@@ -55,7 +55,7 @@ simplelayout.toggleEditMode = function(toggle){
                 //load controls
                 if (item.data.replace(/\s/gi, '').length)
                     target.html(item.data);
-                
+
                 //show controls div
                 target.show();
                 var $block = target.closest('.BlockOverallWrapper');
@@ -108,7 +108,7 @@ simplelayout.toggleEditMode = function(toggle){
         var controls_el = jq(query_controls)[0];
         simplelayout.setControlsWidth(controls_el);
     }
-    
+
     $edit.trigger('toggle-edit-mode');
 
 
@@ -224,7 +224,7 @@ function activateSimplelayoutActions(){
             urlmatch:'$',urlreplace:' #content > *',
             formselector:'[action*=delete_confirmation]',
             noform:function(){
-                //remove deleted block manually, because we won't reload the 
+                //remove deleted block manually, because we won't reload the
                 //hole page
                 jq('#'+uid).hide('blind',function(){
                     jq(this).remove();
@@ -249,7 +249,7 @@ function activateSimplelayoutActions(){
     //             simplelayout.refreshParagraph(
     //                 $this.closest('.BlockOverallWrapper').find('.sl-layout.active')
     //             );
-    // 
+    //
     //             return 'close';
     //         },
     //         'closeselector':'[name=form.button.cancel]'
