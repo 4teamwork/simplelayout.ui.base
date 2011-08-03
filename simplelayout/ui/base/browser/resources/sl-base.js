@@ -38,7 +38,7 @@ simplelayout.toggleEditMode = function(toggle){
         var uids = [];
         $controls.each(function(){
                 var element_id = jq(this).closest('.BlockOverallWrapper').attr('id');
-                if (element_id != undefined && element_id.length == 36)
+                if (element_id != undefined && (element_id.length === 36 || element_id.length === 40))
                     uids.push(element_id);
                        });
         jq.post(getBaseUrl()+'sl_get_block_controls', {'uids': uids.join(',')},function(data){

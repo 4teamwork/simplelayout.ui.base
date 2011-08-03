@@ -5,6 +5,9 @@ Changelog
 3.0.0
 ----------------
 
+* Plone 4.1 uuid4 support for blocks
+  [03.08.2011, jbaumann]
+
 * Fix selector in delete action using prepOverlay.
   It will no longer reload the hole page.
   [12.05.2011, mathias.leimgruber]
