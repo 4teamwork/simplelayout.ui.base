@@ -5,8 +5,8 @@ Changelog
 3.0.0
 ----------------
 
-* Fix selector in delete action using prepOverlay. 
-  It will no longer reload the hole page. 
+* Fix selector in delete action using prepOverlay.
+  It will no longer reload the hole page.
   [12.05.2011, mathias.leimgruber]
 
 * #486 Simplelayout ImageOverlay verbessern
@@ -18,7 +18,7 @@ Changelog
   http://leandrovieira.com/projects/jquery/lightbox/
   [05.05.2011, elio.schmutz]
 
-* Remove padding by js on the very right image (float). 
+* Remove padding by js on the very right image (float).
   [05.05.2011, mathias.leimgruber]
 
 * Moved prepOverlay for images in a new JS file (permission Problem)
@@ -38,7 +38,7 @@ Changelog
 
 * removed old plone globals, use now portal_state
   [12.07.2010, mathias.leimgruber]
-  
+
 * make views work with plone4
   [12.07.2010, mathias.leimgruber]
 
@@ -67,7 +67,7 @@ Changelog
 
 2.0rc2
 ---------------
-* moved JS toggleEditMode funtion from simplelayout.base to this 
+* moved JS toggleEditMode funtion from simplelayout.base to this
   package [mathias.leimgruber]
 * use cookie to store the edit-mode state [mathias.leimgruber]
 * use collective.js.jquery [mathias.leimgruber]
@@ -75,7 +75,7 @@ Changelog
 
 2.0rc1
 ----------------
-* JS-fix: load controls on pages without any blocks, faild if there 
+* JS-fix: load controls on pages without any blocks, faild if there
   were more than one simplelayout container. [mathias.leimgruber]
 
 
@@ -92,8 +92,8 @@ Changelog
 2.0b2
 ----------------
 
-* Bugfix: bind toggleeditmode event only to the first matching 
-  simplelayout-content class, this is important for 
+* Bugfix: bind toggleeditmode event only to the first matching
+  simplelayout-content class, this is important for
   simplelayout.portlet.dropzone package [mathias.leimgruber]
 * define ajaxManager globaly in this package [mathias.leimgruber]
 
@@ -113,4 +113,4 @@ Changelog
     - more...
 * includes newest jquery v1.3.0
 * includes jquery theme "silver"
- 
+
