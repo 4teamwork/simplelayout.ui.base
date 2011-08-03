@@ -155,7 +155,7 @@ function getBaseUrl(){
 simplelayout.refreshParagraph = function(item){
     //var item = this;
     var a_el = jq('a', item);
-    var id = a_el[0].id.split("-");
+    var id = a_el[0].id.split("_");
     var uid = id[0];
     //outch we have to change this asap - it makes no sense
     var layout = id[1];
