@@ -4,6 +4,10 @@
     xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="simplelayout">
 
+    <include package="Products.CMFCore" file="permissions.zcml"
+        xmlns:zcml="http://namespaces.zope.org/zcml"
+        zcml:condition="have plone-41" />
+
     <browser:resourceDirectory
         name="simplelayout.ui.base-resources"
         directory="resources" />
@@ -20,7 +24,7 @@
         for="Products.CMFCore.interfaces._content.IFolderish"
         name="sl_ui_changelayout"
         class=".views.ChangeLayout"
-		template="content.pt"
+        template="content.pt"
         permission="cmf.ModifyPortalContent"
         />
 
