@@ -3,6 +3,10 @@ Changelog
 
 3.0
 ---
+
+* Applied patch from Carsten Rebbien. Changes for plone 4.1
+  [15.11.2011, mathias.leimgruber]
+
 * Trigger block "refreshed" event. 
    [04.01.2011, mathias.leimgruber]
 
