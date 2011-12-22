@@ -5,6 +5,9 @@ Changelog
 3.0.0
 ----------------
 
+* Add image-download-link to lightbox
+  [22.12.2011, eschmutz]
+
 * Add new arrowimages
   [22.12.2011, eschmutz]
 
