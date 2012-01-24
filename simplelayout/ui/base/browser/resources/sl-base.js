@@ -216,4 +216,26 @@ jq(function(){
         e.preventDefault();
         simplelayout.toggleEditMode(enable=false, el=this);
     });
+
+    // Implement edit-bar slide
+    jq('.sl-toggle-edit-bar-wrapper').bind('click', function(e){
+        jq(e.currentTarget).parent().find('.sl-actions-wrapper .sl-toggle-edit-bar.ui-icon-triangle-1-w').hide(
+                "slide", { direction: "left" }, 500, function(){
+            jq(this).removeClass('ui-icon-triangle-1-w').addClass('ui-icon-triangle-1-o');
+        });
+        jq(e.currentTarget).parent().find('.sl-actions-wrapper .sl-toggle-edit-bar.ui-icon-triangle-1-o').show("slide", { direction: "right" }, 500, function(){
+            jq(this).removeClass('ui-icon-triangle-1-o').addClass('ui-icon-triangle-1-w');
+        });
+    });
+
+    jq('.sl-toggle-edit-bar-wrapper').click().toggle
+        (function() {
+            jq(this).parent().find('.sl-actions-wrapper').hide("slide", { direction: "left" }, 300);
+            jq(this).find('.sl-toggle-edit-bar').removeClass('ui-icon-triangle-1-w');
+            jq(this).find('.sl-toggle-edit-bar').addClass('ui-icon-triangle-1-e');
+    }, function() {
+        jq(this).parent().find('.sl-actions-wrapper').show("slide", { direction: "right" }, 300);
+        jq(this).find('.sl-toggle-edit-bar').removeClass('ui-icon-triangle-1-e').addClass('ui-icon-triangle-1-w');
+    });
+
 });
