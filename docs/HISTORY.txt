@@ -2,8 +2,11 @@ Changelog
 =========
 
 
-3.0.0
-----------------
+3.0
+---
+
+* Implement new way of editing a block (edit actions will appear at mousover).
+  [mathias.leimgruber]
 
 * Add image-download-link to lightbox
   [22.12.2011, eschmutz]

@@ -5,96 +5,37 @@ var ajaxManager = jq.manageAjax.create('queuedRequests', {
 
 
 
-simplelayout.toggleEditMode = function(toggle){
-
-    var $controls = jq('.sl-controls');
+simplelayout.toggleEditMode = function(enable, el){
+    var $controls = jq('.sl-controls', jq(el));
+    var $block = $controls.closest('.BlockOverallWrapper');
     var $slots = jq('.simplelayout-content [id*=slot]');
-    var $view = jq('#contentview-view');
-    var $edit = jq('#contentview-edit');
-    var $preview = jq('#contentview-preview');
 
-    //set edit_mode to zero when someone clicks on view or preview
-    $view.bind('click', function(){
-        createCookie('edit_mode','0');
-    });
-    $preview.bind('click', function(){
-        createCookie('edit_mode','0');
-    });
+    if(enable){
+        //show controls div
+        $controls.show();
+        $controls.animate({opacity:1.0}, {queue: false, duration: 300});
+        if (!$block.hasClass("blockHighlight"))
+            $block.addClass("blockHighlight");
 
+        //expose edit area
+        //enable later
+        //simplelayout.expose().load();
 
-    //get the edit mode state from cookie
-    simplelayout.edit_mode = readCookie('edit_mode');
-    //set to 0 if null
-    if (!simplelayout.edit_mode)
-        simplelayout.edit_mode = "0";
-
-    if (toggle) {
-        simplelayout.edit_mode=="0" ? simplelayout.edit_mode = "1" : simplelayout.edit_mode = "0";
-        createCookie('edit_mode',simplelayout.edit_mode);
-        }
+        if (!$slots.hasClass("highlightBorder"))
+            $slots.addClass("highlightBorder");
 
 
-    if(simplelayout.edit_mode=="1" && $controls.length != 0){
-        var uids = [];
-        $controls.each(function(){
-                var element_id = jq(this).closest('.BlockOverallWrapper').attr('id');
-                if (element_id != undefined && (element_id.length === 36 || element_id.length === 40))
-                    uids.push(element_id);
-                       });
-        jq.post(getBaseUrl()+'sl_get_block_controls', {'uids': uids.join(',')},function(data){
-            //first element is the container controls area
-                  jq(jq('.sl-controls').get(0)).html(data.container).each(
-                    function() {
-                      if(jq(this).html().replace(/\s/gi, '').length > 0) {
-                        // only show if there are any controls
-                        jq(this).show('slow');
-                      }
-                    });
-            jq.each(data.items, function(i,item){
-                var target = jq('#'+item.id+' .sl-controls');
-                //load controls
-                if (item.data.replace(/\s/gi, '').length)
-                    target.html(item.data);
-
-                //show controls div
-                target.show();
-                var $block = target.closest('.BlockOverallWrapper');
-                if (!$block.hasClass("blockHighlight"))
-                    $block.addClass("blockHighlight");
-
-            });
-
-            //add borders
-            if (!$slots.hasClass("highlightBorder"))
-                $slots.addClass("highlightBorder");
-
-            //edit is selected
-            if (!$edit.hasClass("selected"))
-                    $edit.addClass("selected");
-            $view.removeClass("selected");
-
-            //expose edit area
-            //enable later
-            //simplelayout.expose().load();
-
-            jq(".simplelayout-content").trigger('actionsloaded');
-
-        },'json');
+        jq(".simplelayout-content").trigger('actionsloaded');
 
         // init empty block spaces
         setHeightOfEmptyDropZone();
 
     }else{
-        var blocks = jq('.BlockOverallWrapper');
-        blocks.removeClass("blockHighlight");
+        $block.removeClass("blockHighlight");
         $slots.removeClass("highlightBorder");
-        $controls.hide("slow");
-        $controls.html('&nbsp;');
-        //view is selected
-        if (!$view.hasClass("selected"))
-                $view.addClass("selected");
-
-        $edit.removeClass("selected");
+        $controls.animate({opacity:0}, { queue: false, duration: 300 }, function(){
+            $controls.hide();
+        });
 
         //expose edit area
         //enable later
@@ -109,7 +50,6 @@ simplelayout.toggleEditMode = function(toggle){
         simplelayout.setControlsWidth(controls_el);
     }
 
-    $edit.trigger('toggle-edit-mode');
 
 
 }
@@ -265,13 +205,15 @@ jq(function(){
 // XXX initializeMenus is a toggle and is already called by plone
 //     jq(".simplelayout-content:first").bind("actionsloaded", function(){initializeMenus();});
 
-    //toggleEditMode it checks if we are on edit mode or not
-    simplelayout.toggleEditMode(toggle=false);
-
-    //bind click event on edit-button
-    jq('#contentview-edit a').bind('click',function(e){
+    //bind mouseover/mouseout event on edit-button
+    jq('div.simplelayout-content .BlockOverallWrapper').bind('mouseenter',function(e){
         e.stopPropagation();
         e.preventDefault();
-        simplelayout.toggleEditMode(toggle=true);
+        simplelayout.toggleEditMode(enable=true, el=this);
+    });
+    jq('div.simplelayout-content .BlockOverallWrapper').bind('mouseleave',function(e){
+        e.stopPropagation();
+        e.preventDefault();
+        simplelayout.toggleEditMode(enable=false, el=this);
     });
 });
