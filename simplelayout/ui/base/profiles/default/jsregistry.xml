@@ -6,7 +6,7 @@
     id="sl_ui_variables.js" inline="False" />
  <javascript cacheable="True" compression="safe" cookable="True"
     enabled="True"
-    expression="object/@@simplelayout/isSimplelayout"
+    expression="python:not request.get('disable_border', 0) and  object.restrictedTraverse('@@simplelayout').isSimplelayout()"
     id="++resource++simplelayout.ui.base-resources/sl-base.js"
     inline="False" insert-after="sl_ui_variables.js"/>
  <javascript cacheable="True" compression="safe" cookable="True"
