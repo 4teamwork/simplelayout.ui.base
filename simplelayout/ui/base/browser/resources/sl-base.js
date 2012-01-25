@@ -218,13 +218,15 @@ jq(function(){
     });
 
     // Implement edit-bar slide
-    jq('.sl-toggle-edit-bar-wrapper').click().toggle
-        (function() {
+    jq('.sl-toggle-edit-bar-wrapper').bind('click', function(e){
+        var $this = jq(this);
+        var $bar = jq('.sl-toggle-edit-bar', $this);
+        if ($bar.hasClass('ui-icon-triangle-1-e')){
             jq(this).closest('.simplelayout-content').find('.sl-actions-wrapper').hide();
             jq(this).closest('.simplelayout-content').find('.sl-toggle-edit-bar').removeClass('ui-icon-triangle-1-e').addClass('ui-icon-triangle-1-w');
-    }, function() {
-        jq(this).closest('.simplelayout-content').find('.sl-actions-wrapper').show();
-        jq(this).closest('.simplelayout-content').find('.sl-toggle-edit-bar').removeClass('ui-icon-triangle-1-w').addClass('ui-icon-triangle-1-e');
+        } else {
+            jq(this).closest('.simplelayout-content').find('.sl-actions-wrapper').show();
+            jq(this).closest('.simplelayout-content').find('.sl-toggle-edit-bar').removeClass('ui-icon-triangle-1-w').addClass('ui-icon-triangle-1-e');
+        }
     });
-
 });
