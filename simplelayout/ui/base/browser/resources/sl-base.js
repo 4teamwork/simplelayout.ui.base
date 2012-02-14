@@ -13,7 +13,7 @@ simplelayout.toggleEditMode = function(enable, el){
     if(enable){
         //show controls div
         $controls.show();
-        $controls.animate({opacity:1.0}, {queue: false, duration: 300});
+        $controls.animate({opacity:1.0, width:400}, {queue: false, duration: 0});
         if (!$block.hasClass("blockHighlight"))
             $block.addClass("blockHighlight");
 
@@ -33,7 +33,7 @@ simplelayout.toggleEditMode = function(enable, el){
     }else{
         $block.removeClass("blockHighlight");
         $slots.removeClass("highlightBorder");
-        $controls.animate({opacity:0}, { queue: false, duration: 300 }, function(){
+        $controls.animate({opacity:0,width:10}, { queue: false, duration: 0 }, function(){
             $controls.hide();
         });
 
@@ -47,7 +47,7 @@ simplelayout.toggleEditMode = function(enable, el){
     for (var b=0;b<imgblocks.length;b++) {
         var query_controls = '#'+imgblocks[b].id + ' .sl-controls';
         var controls_el = jq(query_controls)[0];
-        simplelayout.setControlsWidth(controls_el);
+        //simplelayout.setControlsWidth(controls_el);
     }
 
 
@@ -117,7 +117,7 @@ simplelayout.refreshParagraph = function(item){
                                 jq('#uid_' + uid +' .active').removeClass('active');
                                 jq(item).addClass('active');
                                 simplelayout.alignBlockToGridAction();
-                                simplelayout.setControlsWidth(item);
+                                //simplelayout.setControlsWidth(item);
                                 //trigger refreshed event
                                 var $wrapper = jq(item).closest('.BlockOverallWrapper');
                                 jq(".simplelayout-content:first").trigger('refreshed',[$wrapper]);
@@ -128,16 +128,16 @@ simplelayout.refreshParagraph = function(item){
 
 };
 
-simplelayout.setControlsWidth = function(item){
-    var imgblock = jq(item).closest('.BlockOverallWrapper.image');
-    if (imgblock.length != 0) {
-        // Get wrapper width
-        var wrapper_width = jq('.sl-img-wrapper', imgblock).width();
-        var controls_el = jq('.sl-controls', imgblock);
-        controls_el.css('width',wrapper_width+'px');
-    }
-    return 0;
-}
+// simplelayout.setControlsWidth = function(item){
+//     var imgblock = jq(item).closest('.BlockOverallWrapper.image');
+//     if (imgblock.length != 0) {
+//         // Get wrapper width
+//         var wrapper_width = jq('.sl-img-wrapper', imgblock).width();
+//         var controls_el = jq('.sl-controls', imgblock);
+//         controls_el.css('width',wrapper_width+'px');
+//     }
+//     return 0;
+// }
 
 
 function activeSimpleLayoutControls(){
