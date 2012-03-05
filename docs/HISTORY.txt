@@ -5,7 +5,7 @@ Changelog
 3.0
 ---
 
-* Implement new way of editing a block (edit actions will appear at mousover).
+3.0b1 (2012-03-05)
   [mathias.leimgruber]
 
 * Add image-download-link to lightbox
