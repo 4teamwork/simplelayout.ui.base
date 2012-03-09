@@ -121,7 +121,7 @@ simplelayout.refreshParagraph = function(item){
                                 //trigger refreshed event
                                 var $wrapper = jq(item).closest('.BlockOverallWrapper');
                                 jq(".simplelayout-content:first").trigger('refreshed',[$wrapper]);
-
+                                jq('.sl-img-wrapper a').lightBox();
                                 }
                             });
     return 0;
