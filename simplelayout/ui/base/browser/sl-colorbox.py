@@ -25,14 +25,17 @@ class InitializeColorbox(BrowserView):
                             context=self.request)
 
         return """
-            jQuery(function($) {
-                var link = jq('.sl-img-wrapper a');
-                link.attr('rel', 'colorbox');
-                %s
-                link.colorbox({
+            function initializeSimplelayoutColorbox(element) {
+                element.attr('rel', 'colorbox');
+                element.colorbox({
                     %s
                 });
+            }
+            jQuery(function($) {
+                var link = jq('.sl-img-wrapper a');
+                %s
+                initializeSimplelayoutColorbox(link);
             });
         """ % (
-            download_link,
-            ','.join(settings.colorbox_config))
+            ','.join(settings.colorbox_config),
+            download_link)
