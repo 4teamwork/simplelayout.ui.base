@@ -8,6 +8,8 @@
     <five:registerPackage package="." initialize=".initialize" />
 
     <include package="plone.app.jquerytools" />
+    <include package="ftw.colorbox" />
+
     <include package=".browser" />
     
     <genericsetup:registerProfile
@@ -20,5 +22,7 @@
 
    <cmf:registerDirectory
        name="simplelayout.ui.base" recursive="True"/>
+
+    <include file="upgrades.zcml" />
 
 </configure>

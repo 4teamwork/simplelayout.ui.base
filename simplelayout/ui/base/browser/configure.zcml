@@ -11,14 +11,10 @@
     <browser:resourceDirectory
         name="simplelayout.ui.base-resources"
         directory="resources" />
-        
+
     <browser:resourceDirectory
         name="simplelayout.ui.base-theme-resources"
         directory="resources/theme" />
-
-    <browser:resourceDirectory
-        name="simplelayout.ui.base-lightbox"
-        directory="resources/jquery_lightbox" />
 
     <browser:page
         for="Products.CMFCore.interfaces._content.IFolderish"
@@ -48,6 +44,12 @@
         class=".views.RenderBlockControls"
         permission="cmf.ModifyPortalContent"
         />
-        
+
+    <browser:page
+        for="*"
+        name="sl-initialize-colorbox.js"
+        class=".sl-colorbox.InitializeColorbox"
+        permission="zope2.View"
+        />
 
 </configure>

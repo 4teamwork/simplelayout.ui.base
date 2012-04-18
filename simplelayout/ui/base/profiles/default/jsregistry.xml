@@ -18,12 +18,13 @@
     enabled="True" expression=""
     id="++resource++simplelayout.ui.base-resources/jq-QueuManagerPlugin-v0.2.js"
     inline="False" insert-after="jquery-integration.js"/>
- <javascript cacheable="True" compression="safe" cookable="True"
-    enabled="True" expression=""
-    id="++resource++simplelayout.ui.base-lightbox/jquery.lightbox-0.5.min.js"
-    inline="False" insert-after="++resource++simplelayout.ui.base-resources/jq-QueuManagerPlugin-v0.2.js"/>
  <javascript
     id="++resource++kukit-devel.js"
     cacheable="False" compression="none" cookable="False"
     enabled="False" expression="python: not here.restrictedTraverse('@@plone_portal_state').anonymous() and here.restrictedTraverse('@@kss_devel_mode').ison()"  inline="False"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression=""
+    id="sl-initialize-colorbox.js"
+    inline="False"
+    />
 </object>

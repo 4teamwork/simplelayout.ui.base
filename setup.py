@@ -25,6 +25,7 @@ setup(name='simplelayout.ui.base',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'ftw.colorbox',
           'z3c.json',
           # -*- Extra requirements: -*-
       ],
