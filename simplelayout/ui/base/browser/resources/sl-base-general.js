@@ -1,6 +1,4 @@
 jq(function(){
-    //use jquery.lightbox from Lightbox to show images
-//    jq('.sl-img-wrapper a').colorbox({});
 
     // Detect floated images on the very right side and remove padding-right/
     // margin-right (so it will fit to the right border)
