@@ -5,8 +5,12 @@ Changelog
 3.0b3 (unreleased)
 ------------------
 
+- Do highlight slots if you hover a block.
+  [Julian Infanger]
+
 - Replaced lightbox with colorbox. Added colorbox integration including config.
   Added upgradestep to remove lightbox js and css and install ftw.colorbox.
+  [Julian Infanger]
 
 
 3.0b2 (2012-04-05)

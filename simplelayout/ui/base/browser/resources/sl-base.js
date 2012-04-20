@@ -8,7 +8,6 @@ var ajaxManager = jq.manageAjax.create('queuedRequests', {
 simplelayout.toggleEditMode = function(enable, el){
     var $controls = jq('.sl-controls', jq(el));
     var $block = $controls.closest('.BlockOverallWrapper');
-    var $slots = jq('.simplelayout-content [id*=slot]');
 
     if(enable){
         //show controls div
@@ -17,14 +16,6 @@ simplelayout.toggleEditMode = function(enable, el){
         if (!$block.hasClass("blockHighlight"))
             $block.addClass("blockHighlight");
 
-        //expose edit area
-        //enable later
-        //simplelayout.expose().load();
-
-        if (!$slots.hasClass("highlightBorder"))
-            $slots.addClass("highlightBorder");
-
-
         jq(".simplelayout-content").trigger('actionsloaded');
 
         // init empty block spaces
@@ -32,7 +23,6 @@ simplelayout.toggleEditMode = function(enable, el){
 
     }else{
         $block.removeClass("blockHighlight");
-        $slots.removeClass("highlightBorder");
         $controls.animate({opacity:0,width:10}, { queue: false, duration: 0 }, function(){
             $controls.hide();
         });
