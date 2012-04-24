@@ -88,13 +88,18 @@ simplelayout.refreshParagraph = function(item){
     var id = a_el[0].id.split("_");
     var uid = id[0];
     //outch we have to change this asap - it makes no sense
-    var params = id[1].split('-')
+    var params = id[1].split('-');
     var layout = params[0];
     var cssclass = params[1];
     var viewname = params[2];
     if (cssclass==undefined){
         cssclass = '';
     }
+
+    if (cssclass !== ''){
+        layout = layout + '-' + cssclass;
+    }
+
     if (viewname==undefined){
         viewname = '';
     }
