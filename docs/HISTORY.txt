@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-3.0b4 (unreleased)
+3.0b4 (2012-04-24)
 ------------------
 
 - Fix for right floating images.
