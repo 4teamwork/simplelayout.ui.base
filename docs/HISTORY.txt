@@ -5,6 +5,9 @@ Changelog
 3.0b5 (unreleased)
 ------------------
 
+- Move to github, cleanup.
+  [jone]
+
 - Fix wrong initial metadata according to latest upgrade.
   [jone]
 
