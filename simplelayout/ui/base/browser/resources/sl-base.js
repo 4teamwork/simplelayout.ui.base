@@ -12,7 +12,6 @@ simplelayout.toggleEditMode = function(enable, el){
     if(enable){
         //show controls div
         $controls.show();
-        $controls.animate({opacity:1.0, width:400}, {queue: false, duration: 0});
         if (!$block.hasClass("blockHighlight"))
             $block.addClass("blockHighlight");
 
@@ -23,14 +22,7 @@ simplelayout.toggleEditMode = function(enable, el){
 
     }else{
         $block.removeClass("blockHighlight");
-        $controls.animate({opacity:0,width:10}, { queue: false, duration: 0 }, function(){
-            $controls.hide();
-        });
-
-        //expose edit area
-        //enable later
-        //simplelayout.expose().close();
-
+        $controls.hide();
     }
 
     var imgblocks = jq('.BlockOverallWrapper.image');
