@@ -5,6 +5,9 @@ Changelog
 3.0b5 (unreleased)
 ------------------
 
+- Improved simplelayout action js.
+  [Julian Infanger]
+
 - Move to github, cleanup.
   [jone]
 
