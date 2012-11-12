@@ -21,7 +21,7 @@ setup(name='simplelayout.ui.base',
       keywords='',
       author='4teamwork GmbH',
       author_email='mailto:info@4teamwork.ch',
-      url='https://github.com/4teamwork/simplelayout.ui.basehttp://www.',
+      url='https://github.com/4teamwork/simplelayout.ui.base',
       license='GPL2',
 
       packages=find_packages(exclude=['ez_setup']),
