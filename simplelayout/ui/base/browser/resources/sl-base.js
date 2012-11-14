@@ -209,13 +209,11 @@ jq(function(){
         var $allbars = jq(this).closest('.simplelayout-content').find('.sl-toggle-edit-bar');
         var $wrapper = $this.closest('.simplelayout-content').find('.sl-actions-wrapper');
         if ($bar.hasClass('ui-icon-triangle-1-w')){
-            console.info('open');
             $this.parent().css('width', '600px');
             $wrapper.addClass('showSimplelayoutControls');
 
             $allbars.removeClass('ui-icon-triangle-1-w').addClass('ui-icon-triangle-1-e');
         } else {
-            console.info('close');
             $this.parent().css('width', '10px');
             $wrapper.removeClass('showSimplelayoutControls');
             $allbars.addClass('ui-icon-triangle-1-w');
