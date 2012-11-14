@@ -31,10 +31,7 @@ simplelayout.toggleEditMode = function(enable, el){
         var controls_el = jq(query_controls)[0];
         //simplelayout.setControlsWidth(controls_el);
     }
-
-
-
-}
+};
 
 /* not really intuitive so far */
 /*
@@ -59,7 +56,7 @@ function gup( name, url )
       url = window.location.href;
       }
   var results = regex.exec( url );
-  if( results == null )
+  if( results === null )
     return "";
   else
     return results[1];
@@ -92,7 +89,7 @@ simplelayout.refreshParagraph = function(item){
         layout = layout + '-' + cssclass;
     }
 
-    if (viewname==undefined){
+    if (viewname === undefined){
         viewname = '';
     }
 
@@ -209,12 +206,19 @@ jq(function(){
     jq('.sl-toggle-edit-bar-wrapper').bind('click', function(e){
         var $this = jq(this);
         var $bar = jq('.sl-toggle-edit-bar', $this);
-        if ($bar.hasClass('ui-icon-triangle-1-e')){
-            jq(this).closest('.simplelayout-content').find('.sl-actions-wrapper').hide();
-            jq(this).closest('.simplelayout-content').find('.sl-toggle-edit-bar').removeClass('ui-icon-triangle-1-e').addClass('ui-icon-triangle-1-w');
+        var $allbars = jq(this).closest('.simplelayout-content').find('.sl-toggle-edit-bar');
+        var $wrapper = $this.closest('.simplelayout-content').find('.sl-actions-wrapper');
+        if ($bar.hasClass('ui-icon-triangle-1-w')){
+            console.info('open');
+            $this.parent().css('width', '600px');
+            $wrapper.addClass('showSimplelayoutControls');
+
+            $allbars.removeClass('ui-icon-triangle-1-w').addClass('ui-icon-triangle-1-e');
         } else {
-            jq(this).closest('.simplelayout-content').find('.sl-actions-wrapper').show();
-            jq(this).closest('.simplelayout-content').find('.sl-toggle-edit-bar').removeClass('ui-icon-triangle-1-w').addClass('ui-icon-triangle-1-e');
+            console.info('close');
+            $this.parent().css('width', '10px');
+            $wrapper.removeClass('showSimplelayoutControls');
+            $allbars.addClass('ui-icon-triangle-1-w');
         }
     });
 });
