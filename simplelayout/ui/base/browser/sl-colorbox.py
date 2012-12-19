@@ -33,8 +33,10 @@ class InitializeColorbox(BrowserView):
             }
             jQuery(function($) {
                 var link = jq('.sl-img-wrapper a');
+                if (link.length !== 0){
                 %s
                 initializeSimplelayoutColorbox(link);
+                }
             });
         """ % (
             ','.join(settings.colorbox_config),
