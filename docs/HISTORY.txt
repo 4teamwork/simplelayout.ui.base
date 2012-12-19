@@ -5,6 +5,9 @@ Changelog
 3.0b5 (unreleased)
 ------------------
 
+- Fix js bug in init colorbox.
+  [mathias.leimgruber]
+
 - Fix sl-control toggler js.
   [mathias.leimgruber]
 
