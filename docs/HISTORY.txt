@@ -5,7 +5,7 @@ Changelog
 3.0b5 (unreleased)
 ------------------
 
-- Fix js bug in init colorbox.
+- Remove "setHeightOfEmptyDropZone".
   [mathias.leimgruber]
 
 - Fix sl-control toggler js.

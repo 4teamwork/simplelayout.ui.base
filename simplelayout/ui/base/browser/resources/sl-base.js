@@ -17,9 +17,6 @@ simplelayout.toggleEditMode = function(enable, el){
 
         jq(".simplelayout-content").trigger('actionsloaded');
 
-        // init empty block spaces
-        setHeightOfEmptyDropZone();
-
     }else{
         $block.removeClass("blockHighlight");
         $controls.hide();
