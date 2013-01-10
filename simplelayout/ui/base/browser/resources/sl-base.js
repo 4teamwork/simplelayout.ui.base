@@ -110,18 +110,6 @@ simplelayout.refreshParagraph = function(item){
 
 };
 
-// simplelayout.setControlsWidth = function(item){
-//     var imgblock = jq(item).closest('.BlockOverallWrapper.image');
-//     if (imgblock.length != 0) {
-//         // Get wrapper width
-//         var wrapper_width = jq('.sl-img-wrapper', imgblock).width();
-//         var controls_el = jq('.sl-controls', imgblock);
-//         controls_el.css('width',wrapper_width+'px');
-//     }
-//     return 0;
-// }
-
-
 function activeSimpleLayoutControls(){
     jq(".sl-layout").bind("click", function(e){
             e.stopPropagation();
@@ -155,37 +143,12 @@ function activateSimplelayoutActions(){
         });
     });
 
-    // TODO: Currently we miss some js after loading de edit.pt in the overlay
-    // Example: WYSIWYG-editor will no load...
-    // I tried to use subtype iframe, wihtout success
-    //edit
-    // jq('.simplelayout-content a.sl-edit-action').each(function(i, o){
-    //     var $this = jq(o);
-    //     $this.prepOverlay({
-    //         subtype:'ajax',
-    //         filter:'#visual-portal-wrapper > *',
-    //         formselector:'[action*=base_edit]',
-    //         noform:function(){
-    //             simplelayout.refreshParagraph(
-    //                 $this.closest('.BlockOverallWrapper').find('.sl-layout.active')
-    //             );
-    //
-    //             return 'close';
-    //         },
-    //         'closeselector':'[name=form.button.cancel]'
-    //     });
-    // });
-    // return false;
-
-
 }
 
 jq(function(){
     jq(".simplelayout-content:first").bind("actionsloaded", activateSimplelayoutActions);
     jq(".simplelayout-content:first").bind("actionsloaded", activeSimpleLayoutControls);
 
-// XXX initializeMenus is a toggle and is already called by plone
-//     jq(".simplelayout-content:first").bind("actionsloaded", function(){initializeMenus();});
 
     //bind mouseover/mouseout event on edit-button
     jq('div.simplelayout-content .BlockOverallWrapper').bind('mouseenter',function(e){
