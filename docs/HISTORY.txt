@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-3.0b5 (unreleased)
+3.0b5 (2013-01-21)
 ------------------
 
 - Remove "setHeightOfEmptyDropZone".

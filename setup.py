@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '3.0b5.dev0'
+version = '3.0b5'
 
 setup(name='simplelayout.ui.base',
       version=version,
