@@ -1,11 +1,11 @@
-jq(function(){
+$(function(){
 
     // Detect floated images on the very right side and remove padding-right/
     // margin-right (so it will fit to the right border)
 
 
     simplelayout.arangeImages = function(){
-        var $images = jq('.BlockOverallWrapper.image.leftFloatable .sl-img-wrapper');
+        var $images = $('.BlockOverallWrapper.image.leftFloatable .sl-img-wrapper');
 
         // reset
         $images.removeClass('SLNoPaddingRight').removeClass('SLPaddingRight');
@@ -17,10 +17,10 @@ jq(function(){
             if (i > 0){
                 var $prev = $current;
             }else{
-                var $current = jq(o);
+                var $current = $(o);
                 continue;
             }
-            $current = jq(o);
+            $current = $(o);
             var current_offsety = $current.offset().top;
             var prev_offsety = $prev.offset().top;
 
@@ -36,5 +36,5 @@ jq(function(){
 
      simplelayout.arangeImages();
      //also bind event to block refreshed event
-      jq(".simplelayout-content:first").bind('refreshed', simplelayout.arangeImages);
+      $(".simplelayout-content:first").bind('refreshed', simplelayout.arangeImages);
 });

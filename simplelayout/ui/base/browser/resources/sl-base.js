@@ -1,4 +1,4 @@
-var ajaxManager = jq.manageAjax.create('queuedRequests', {
+var ajaxManager = $.manageAjax.create('queuedRequests', {
     queue: true,
     cacheResponse: false
 });
@@ -6,7 +6,7 @@ var ajaxManager = jq.manageAjax.create('queuedRequests', {
 
 
 simplelayout.toggleEditMode = function(enable, el){
-    var $controls = jq('.sl-controls', jq(el));
+    var $controls = $('.sl-controls', $(el));
     var $block = $controls.closest('.BlockOverallWrapper');
 
     if(enable){
@@ -15,17 +15,17 @@ simplelayout.toggleEditMode = function(enable, el){
         if (!$block.hasClass("blockHighlight"))
             $block.addClass("blockHighlight");
 
-        jq(".simplelayout-content").trigger('actionsloaded');
+        $(".simplelayout-content").trigger('actionsloaded');
 
     }else{
         $block.removeClass("blockHighlight");
         $controls.hide();
     }
 
-    var imgblocks = jq('.BlockOverallWrapper.image');
+    var imgblocks = $('.BlockOverallWrapper.image');
     for (var b=0;b<imgblocks.length;b++) {
         var query_controls = '#'+imgblocks[b].id + ' .sl-controls';
-        var controls_el = jq(query_controls)[0];
+        var controls_el = $(query_controls)[0];
         //simplelayout.setControlsWidth(controls_el);
     }
 };
@@ -33,7 +33,7 @@ simplelayout.toggleEditMode = function(enable, el){
 /* not really intuitive so far */
 /*
 simplelayout.expose = function(){
-    var editable = jq('#portal-columns');
+    var editable = $('#portal-columns');
     var exposed =  editable.expose({api: true,
                                     opacity: 0.3,
                                     color:'black',
@@ -60,7 +60,7 @@ function gup( name, url )
 }
 
 function getBaseUrl(){
-    var bhref= base_href = jq('base')[0].href;
+    var bhref= base_href = $('base')[0].href;
     if(bhref.substr(bhref.length-1,1)!='/'){
         bhref += "/";
         }
@@ -70,7 +70,7 @@ function getBaseUrl(){
 
 simplelayout.refreshParagraph = function(item){
     //var item = this;
-    var a_el = jq('a', item);
+    var a_el = $('a', item);
     var id = a_el[0].id.split("_");
     var uid = id[0];
     //outch we have to change this asap - it makes no sense
@@ -95,15 +95,15 @@ simplelayout.refreshParagraph = function(item){
     ajaxManager.add({url:'sl_ui_changelayout',
                             data:{ uid : uid, layout :layout,viewname:viewname,fieldname:fieldname },
                             success:function(data){
-                                jq('#uid_' + uid +' .simplelayout-block-wrapper').replaceWith(data);
-                                jq('#uid_' + uid +' .active').removeClass('active');
-                                jq(item).addClass('active');
+                                $('#uid_' + uid +' .simplelayout-block-wrapper').replaceWith(data);
+                                $('#uid_' + uid +' .active').removeClass('active');
+                                $(item).addClass('active');
                                 simplelayout.alignBlockToGridAction();
                                 //simplelayout.setControlsWidth(item);
                                 //trigger refreshed event
-                                var $wrapper = jq(item).closest('.BlockOverallWrapper');
-                                jq(".simplelayout-content:first").trigger('refreshed',[$wrapper]);
-                                initializeSimplelayoutColorbox(jq('.sl-img-wrapper a'));
+                                var $wrapper = $(item).closest('.BlockOverallWrapper');
+                                $(".simplelayout-content:first").trigger('refreshed',[$wrapper]);
+                                initializeSimplelayoutColorbox($('.sl-img-wrapper a'));
                                 }
                             });
     return 0;
@@ -111,7 +111,7 @@ simplelayout.refreshParagraph = function(item){
 };
 
 function activeSimpleLayoutControls(){
-    jq(".sl-layout").bind("click", function(e){
+    $(".sl-layout").bind("click", function(e){
             e.stopPropagation();
             e.preventDefault();
 
@@ -124,8 +124,8 @@ function activeSimpleLayoutControls(){
 
 function activateSimplelayoutActions(){
     // delete
-    jq('.simplelayout-content a.sl-delete-action').each(function(i, o){
-        var $this = jq(o);
+    $('.simplelayout-content a.sl-delete-action').each(function(i, o){
+        var $this = $(o);
         var uid = $this.closest('.BlockOverallWrapper').attr('id');
         $this.prepOverlay({
             subtype:'ajax',
@@ -134,8 +134,8 @@ function activateSimplelayoutActions(){
             noform:function(){
                 //remove deleted block manually, because we won't reload the
                 //hole page
-                jq('#'+uid).hide('blind',function(){
-                    jq(this).remove();
+                $('#'+uid).hide('blind',function(){
+                    $(this).remove();
                 });
                 return 'close';
             },
@@ -145,28 +145,28 @@ function activateSimplelayoutActions(){
 
 }
 
-jq(function(){
-    jq(".simplelayout-content:first").bind("actionsloaded", activateSimplelayoutActions);
-    jq(".simplelayout-content:first").bind("actionsloaded", activeSimpleLayoutControls);
+$(function(){
+    $(".simplelayout-content:first").bind("actionsloaded", activateSimplelayoutActions);
+    $(".simplelayout-content:first").bind("actionsloaded", activeSimpleLayoutControls);
 
 
     //bind mouseover/mouseout event on edit-button
-    jq('div.simplelayout-content .BlockOverallWrapper').bind('mouseenter',function(e){
+    $('div.simplelayout-content .BlockOverallWrapper').bind('mouseenter',function(e){
         e.stopPropagation();
         e.preventDefault();
         simplelayout.toggleEditMode(enable=true, el=this);
     });
-    jq('div.simplelayout-content .BlockOverallWrapper').bind('mouseleave',function(e){
+    $('div.simplelayout-content .BlockOverallWrapper').bind('mouseleave',function(e){
         e.stopPropagation();
         e.preventDefault();
         simplelayout.toggleEditMode(enable=false, el=this);
     });
 
     // Implement edit-bar slide
-    jq('.sl-toggle-edit-bar-wrapper').bind('click', function(e){
-        var $this = jq(this);
-        var $bar = jq('.sl-toggle-edit-bar', $this);
-        var $allbars = jq(this).closest('.simplelayout-content').find('.sl-toggle-edit-bar');
+    $('.sl-toggle-edit-bar-wrapper').bind('click', function(e){
+        var $this = $(this);
+        var $bar = $('.sl-toggle-edit-bar', $this);
+        var $allbars = $(this).closest('.simplelayout-content').find('.sl-toggle-edit-bar');
         var $wrapper = $this.closest('.simplelayout-content').find('.sl-actions-wrapper');
         if ($bar.hasClass('ui-icon-triangle-1-w')){
             $this.parent().css('width', '600px');
