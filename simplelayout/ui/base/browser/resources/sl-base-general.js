@@ -1,4 +1,4 @@
-$(function(){
+jQuery(function($){
 
     // Detect floated images on the very right side and remove padding-right/
     // margin-right (so it will fit to the right border)
