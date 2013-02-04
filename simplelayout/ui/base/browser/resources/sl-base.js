@@ -145,7 +145,7 @@ function activateSimplelayoutActions(){
 
 }
 
-$(function(){
+jQuery(function($){
     $(".simplelayout-content:first").bind("actionsloaded", activateSimplelayoutActions);
     $(".simplelayout-content:first").bind("actionsloaded", activeSimpleLayoutControls);
 
