@@ -130,7 +130,7 @@ function activateSimplelayoutActions(){
         $this.prepOverlay({
             subtype:'ajax',
             urlmatch:'$',urlreplace:' #content > *',
-            formselector:'[action*=delete_confirmation]',
+            formselector:'[action*="delete_confirmation"]',
             noform:function(){
                 //remove deleted block manually, because we won't reload the
                 //hole page
@@ -139,7 +139,7 @@ function activateSimplelayoutActions(){
                 });
                 return 'close';
             },
-            'closeselector':'[name=form.button.Cancel]'
+            'closeselector':'[name="form.button.Cancel"]'
         });
     });
 

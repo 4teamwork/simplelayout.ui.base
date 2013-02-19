@@ -5,6 +5,9 @@ Changelog
 3.0b6 (unreleased)
 ------------------
 
+- Fix jquery selectors for jquery 1.7.x.
+  [mathias.leimgruber]
+
 - Replace jq with $.
   [mathias.leimgruber]
 
