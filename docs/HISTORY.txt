@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-3.0b6 (unreleased)
+3.0c1 (2013-03-29)
 ------------------
 
 - Fix jquery selectors for jquery 1.7.x.
