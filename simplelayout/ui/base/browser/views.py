@@ -16,14 +16,18 @@ class ChangeLayout(BrowserView):
 
     template = ViewPageTemplateFile('content.pt')
 
-    def __call__(self, uid=None, layout="", viewname="block_view"):
+    def __call__(self, uid=None, layout="", viewname=""):
         rc = getToolByName(self.context, 'reference_catalog')
         if uid and layout:
             uid = uid.replace('uid_', '')
             block = rc.lookupObject(uid)
             converter = getUtility(IBlockControl, name='block-layout')
-            converter.update(self.context, block, self.request,
-                             layout=layout, viewname=viewname)
+            viewname = converter.update(self.context,
+                                        block,
+                                        self.request,
+                                        layout=layout,
+                                        viewname=viewname
+                                        )
             self.block_view = queryMultiAdapter(
                 (block, self.request), name='block_view-%s' % viewname)
             #fallback
