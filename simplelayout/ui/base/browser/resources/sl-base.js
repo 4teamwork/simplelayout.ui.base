@@ -167,16 +167,15 @@ jQuery(function($){
         var $this = $(this);
         var $bar = $('.sl-toggle-edit-bar', $this);
         var $allbars = $(this).closest('.simplelayout-content').find('.sl-toggle-edit-bar');
-        var $wrapper = $this.closest('.simplelayout-content').find('.sl-actions-wrapper');
-        if ($bar.hasClass('ui-icon-triangle-1-w')){
-            $this.parent().css('width', '600px');
+        var $wrapper = $this.closest('.BlockOverallWrapper').find('.sl-actions-wrapper');
+        if ($wrapper.hasClass('showSimplelayoutControls') != true){
             $wrapper.addClass('showSimplelayoutControls');
-
-            $allbars.removeClass('ui-icon-triangle-1-w').addClass('ui-icon-triangle-1-e');
+            $this.addClass('controlsActive');
+            $this.closest('.sl-controls').css('width', $wrapper.outerWidth() + $this.outerWidth());
         } else {
-            $this.parent().css('width', '10px');
             $wrapper.removeClass('showSimplelayoutControls');
-            $allbars.addClass('ui-icon-triangle-1-w');
+            $this.removeClass('controlsActive');
+            $this.closest('.sl-controls').css('width', '');
         }
     });
 });
