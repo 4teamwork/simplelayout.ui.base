@@ -168,13 +168,15 @@ jQuery(function($){
         var $bar = $('.sl-toggle-edit-bar', $this);
         var $allbars = $(this).closest('.simplelayout-content').find('.sl-toggle-edit-bar');
         var $wrapper = $this.closest('.simplelayout-content').find('.sl-actions-wrapper');
+        var $controls = $(this).closest('.simplelayout-content').find('.sl-controls');
+
         if ($bar.hasClass('ui-icon-triangle-1-w')){
-            $this.parent().css('width', '600px');
+            $controls.css('width', '600px');
             $wrapper.addClass('showSimplelayoutControls');
 
             $allbars.removeClass('ui-icon-triangle-1-w').addClass('ui-icon-triangle-1-e');
         } else {
-            $this.parent().css('width', '10px');
+            $controls.css('width', '10px');
             $wrapper.removeClass('showSimplelayoutControls');
             $allbars.addClass('ui-icon-triangle-1-w');
         }
