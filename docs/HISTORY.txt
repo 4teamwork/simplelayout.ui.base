@@ -5,7 +5,8 @@ Changelog
 3.0c2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Change Size of all sl-controls when collapsed.
+  [tschanzt]
 
 
 3.0c1 (2013-03-29)
