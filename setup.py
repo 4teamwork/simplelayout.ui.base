@@ -3,6 +3,12 @@ import os
 
 version = '3.0c2.dev0'
 
+tests_require = [
+    'plone.app.testing',
+    'simplelayout.base',
+    ]
+
+
 setup(name='simplelayout.ui.base',
       version=version,
       description="Simplelayout ui base package - for plone",
@@ -35,6 +41,9 @@ setup(name='simplelayout.ui.base',
         'z3c.json',
         # -*- Extra requirements: -*-
         ],
+
+      tests_require=tests_require,
+      extras_require=dict(tests=tests_require),
 
       entry_points="""
       # -*- Entry points: -*-
