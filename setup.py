@@ -6,7 +6,6 @@ version = '3.0c2.dev0'
 tests_require = [
     'ftw.testing',
     'plone.app.testing',
-    'simplelayout.base',
     ]
 
 
@@ -37,8 +36,9 @@ setup(name='simplelayout.ui.base',
       zip_safe=False,
 
       install_requires=[
-        'setuptools',
         'ftw.colorbox',
+        'setuptools',
+        'simplelayout.base',
         'z3c.json',
         # -*- Extra requirements: -*-
         ],
