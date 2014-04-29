@@ -4,6 +4,7 @@ import os
 version = '3.0c2.dev0'
 
 tests_require = [
+    'ftw.testing',
     'plone.app.testing',
     'simplelayout.base',
     ]
