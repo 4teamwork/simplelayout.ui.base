@@ -5,6 +5,12 @@ Changelog
 3.0c2 (unreleased)
 ------------------
 
+- Implement uninstall profile.
+  [jone]
+
+- Remove kukit-devel.js disabling.
+  [jone]
+
 - Change Size of all sl-controls when collapsed.
   [tschanzt]
 

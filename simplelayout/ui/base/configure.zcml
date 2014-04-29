@@ -11,12 +11,20 @@
     <include package="ftw.colorbox" />
 
     <include package=".browser" />
-    
+
     <genericsetup:registerProfile
         name="default"
         title="simplelayout.ui.base"
         directory="profiles/default"
         description="Simplelayout UI tools"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+    <genericsetup:registerProfile
+        name="uninstall"
+        title="Uninstall simplelayout.ui.base"
+        directory="profiles/uninstall"
+        description=""
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 

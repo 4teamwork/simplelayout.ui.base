@@ -3,6 +3,12 @@ import os
 
 version = '3.0c2.dev0'
 
+tests_require = [
+    'ftw.testing',
+    'plone.app.testing',
+    ]
+
+
 setup(name='simplelayout.ui.base',
       version=version,
       description="Simplelayout ui base package - for plone",
@@ -30,11 +36,15 @@ setup(name='simplelayout.ui.base',
       zip_safe=False,
 
       install_requires=[
-        'setuptools',
         'ftw.colorbox',
+        'setuptools',
+        'simplelayout.base',
         'z3c.json',
         # -*- Extra requirements: -*-
         ],
+
+      tests_require=tests_require,
+      extras_require=dict(tests=tests_require),
 
       entry_points="""
       # -*- Entry points: -*-
