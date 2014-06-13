@@ -5,7 +5,8 @@ Changelog
 3.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Implement possibility to have multiple view with images.
+  [tschanzt]
 
 
 3.0.0 (2014-05-09)
