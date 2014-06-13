@@ -6,11 +6,11 @@ from Products.CMFPlone.utils import transaction_note
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from simplelayout.base.utils import IBlockControl
+from simplelayout.base.interfaces import IBlockConfig
 from z3c.json import minjson as json
 from zope.component import getMultiAdapter
 from zope.component import getUtility
 from zope.component import queryMultiAdapter
-
 
 class ChangeLayout(BrowserView):
 
@@ -22,12 +22,14 @@ class ChangeLayout(BrowserView):
             uid = uid.replace('uid_', '')
             block = rc.lookupObject(uid)
             converter = getUtility(IBlockControl, name='block-layout')
-            viewname = converter.update(self.context,
-                                        block,
-                                        self.request,
-                                        layout=layout,
-                                        viewname=viewname
-                                        )
+            converter.update(self.context,
+                             block,
+                             self.request,
+                             layout=layout,
+                             viewname=viewname
+                            )
+            blockconfig = IBlockConfig(block)
+            viewname = blockconfig.get_viewname()
             self.block_view = queryMultiAdapter(
                 (block, self.request), name='block_view-%s' % viewname)
             #fallback
