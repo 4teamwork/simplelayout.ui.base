@@ -20,7 +20,7 @@ if int(grid):
     align_to_grid = 1
 
 print """
-simplelayout.align_to_grid = %s
+simplelayout.align_to_grid = %s;
 """ % (align_to_grid)
 
 return printed
