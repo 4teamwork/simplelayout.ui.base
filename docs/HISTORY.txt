@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-3.0.2 (unreleased)
+3.0.2 (2015-02-24)
 ------------------
 
 - Add missing semicolon in sl_ui_variables.js.
