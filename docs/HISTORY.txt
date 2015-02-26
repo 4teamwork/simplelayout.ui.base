@@ -5,7 +5,8 @@ Changelog
 3.0.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Make is possible to disable colorbox on sl images.
+  [lknoepfel]
 
 
 3.0.1 (2014-06-13)

@@ -32,7 +32,7 @@ class InitializeColorbox(BrowserView):
                 });
             }
             jQuery(function($) {
-                var link = $('.sl-img-wrapper a');
+                var link = $('.sl-img-wrapper a:not(.disableColorbox)');
                 if (link.length !== 0){
                 %s
                 initializeSimplelayoutColorbox(link);
