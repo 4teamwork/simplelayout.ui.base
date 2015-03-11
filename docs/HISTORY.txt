@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-3.0.3 (unreleased)
+3.0.3 (2015-03-11)
 ------------------
 
 - Make it possible to disable colorbox on sl images.
