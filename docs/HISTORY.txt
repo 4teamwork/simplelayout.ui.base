@@ -5,7 +5,9 @@ Changelog
 3.0.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Ajax requests made by ajaxManager should be POST, not GET.
+  This solves several caching Issues with latest IE11 and Chrome > 41.
+  [mathias.leimgruber]
 
 
 3.0.3 (2015-03-11)
