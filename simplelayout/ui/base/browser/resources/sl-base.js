@@ -93,6 +93,7 @@ simplelayout.refreshParagraph = function(item){
     var fieldname = gup('fieldname',a_el[0].href);
 
     ajaxManager.add({url:'sl_ui_changelayout',
+                            type: 'POST',
                             data:{ uid : uid, layout :layout,viewname:viewname,fieldname:fieldname },
                             success:function(data){
                                 $('#uid_' + uid +' .simplelayout-block-wrapper').replaceWith(data);
