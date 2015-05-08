@@ -31,8 +31,8 @@ Links
 
 - Simplelayout github project repository: https://github.com/4teamwork/simplelayout.base
 - simplelayout.ui.base github project repository: https://github.com/4teamwork/simplelayout.ui.base
-- Issue tracker: https://github.com/4teamwork/simplelayout.ui.base/issues
-- Package on pypi: http://pypi.python.org/pypi/simplelayout.ui.base
+- Issues: https://github.com/4teamwork/simplelayout.ui.base/issues
+- Pypi: http://pypi.python.org/pypi/simplelayout.ui.base
 
 
 Copyright
