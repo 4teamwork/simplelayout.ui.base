@@ -103,8 +103,8 @@ simplelayout.refreshParagraph = function(item){
                                 //simplelayout.setControlsWidth(item);
                                 //trigger refreshed event
                                 var $wrapper = $(item).closest('.BlockOverallWrapper');
-                                $(".simplelayout-content:first").trigger('refreshed',[$wrapper]);
                                 initializeSimplelayoutColorbox($('.sl-img-wrapper a'));
+                                $(".simplelayout-content:first").trigger('refreshed',[$wrapper]);
                                 }
                             });
     return 0;
