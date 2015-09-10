@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-3.0.5 (unreleased)
+3.0.5 (2015-09-10)
 ------------------
 
 - Trigger 'refreshed' event after colorbox initialization
