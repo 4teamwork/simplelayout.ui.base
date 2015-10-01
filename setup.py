@@ -37,6 +37,7 @@ setup(name='simplelayout.ui.base',
       zip_safe=False,
 
       install_requires=[
+        'Plone',
         'setuptools',
         'ftw.colorbox',
         'z3c.json',
