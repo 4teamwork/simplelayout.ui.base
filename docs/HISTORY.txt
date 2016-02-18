@@ -5,7 +5,8 @@ Changelog
 3.0.6 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Only enable simplelayout block edit actions, if documentEditable class is available.
+  [mathias.leimgruber]
 
 
 3.0.5 (2015-09-10)

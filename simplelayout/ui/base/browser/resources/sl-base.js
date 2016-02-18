@@ -6,6 +6,11 @@ var ajaxManager = $.manageAjax.create('queuedRequests', {
 
 
 simplelayout.toggleEditMode = function(enable, el){
+
+    if ($('.documentEditable').length === 0) {
+      return;
+    }
+
     var $controls = $('.sl-controls', $(el));
     var $block = $controls.closest('.BlockOverallWrapper');
 
